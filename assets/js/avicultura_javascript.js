@@ -228,3 +228,21 @@ function mostrarInformacoesBuscasReceita() {
     
     $('#modalAtualizarEmpresasComReceita #mensagem').html(informação);
 }
+
+/*
+ * SCRIPTS PARA CONTATOS
+ */
+
+function visualizar_mensagem(id) {
+    $.post(base_url + 'alertas/contatos/dados_contato/'+id, {
+        id: id
+    }, function (data) {
+        $('#nome_baixa').val(data.nome);
+        $('#telefone_baixa').val(data.telefone);
+        $('#email_baixa').val(data.email);
+        $('#mensagem_baixa').val(data.mensagem);
+        $('#id_baixa').val(id);
+        
+    }, 'json');
+    $('#modal_editar_empresa').modal('show');
+}
