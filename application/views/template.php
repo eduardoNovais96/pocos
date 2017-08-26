@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Poços</title>
+        <title>SEARCH UP</title>
         <?php
         echo '<link rel="shortcut icon" href="'.base_url('assets/img/Logo.png').'">';
         //<!-- Bootstrap -->

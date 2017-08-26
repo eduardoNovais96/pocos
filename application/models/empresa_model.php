@@ -83,4 +83,13 @@ class Empresa_model extends CI_Model{
         
         return $this->db->get()->result();
     }
+    
+    function set_categoria($dados){
+        return $this->db->insert('categorias', $dados);
+    }
+    
+    function update_categoria($dados, $id){
+        $this->db->where('id_categoria', $id);
+        return $this->db->update('categorias', $dados);
+    }
 }

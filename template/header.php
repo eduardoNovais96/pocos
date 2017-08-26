@@ -7,7 +7,8 @@
         <meta name="author" content="">
         <link rel="icon" href="../../../../favicon.ico">
 
-        <title>OLIP - IFSULDEMINAS</title>
+        <title>SEARCH UP</title>
+        <link rel="shortcut icon" href="<?php echo base_url('assets/img/Logo.png'); ?>">
 
         <!-- Bootstrap core CSS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>

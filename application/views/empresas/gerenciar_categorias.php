@@ -25,14 +25,13 @@
             <?php
             foreach (@$categorias as $c){
                 echo '<tr><td align="center" class="hidden-xs">'.$c->categoria.'</td>';
-                echo '<td align="center"><a class="btn btn-primary" href="javascript:func()" onclick="editar_empresa(' . $c->id_categoria . ')"><i class="glyphicon glyphicon-list"></i></a></td></tr>';
+                echo '<td align="center"><a class="btn btn-primary" href="javascript:func()" onclick="modal_editar_categoria(' . $c->id_categoria . ')"><i class="glyphicon glyphicon-list"></i></a></td></tr>';
             }
             ?>    
         </table>
             
-            echo form_close();
-            
-            echo @$paginacao; ?>
+        <?php 
+        echo form_close(); ?>
     </div>
 </div><br>
 
@@ -41,79 +40,15 @@
         <div class="modal-content">
             <div class="modal-header corTextoModal">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
-                <h4 class="modal-title">Nova Empresa</h4>
+                <h4 class="modal-title">Nova Categoria</h4>
             </div>
             <div class="modal-body">
-                <form role="form" method="post" id="novaLocalizacao" action="<?php echo base_url('empresas/gerenciar_empresas/nova_empresa'); ?>" >
+                <form role="form" method="post" id="novaLocalizacao" action="<?php echo base_url('empresas/categorias/nova_categoria'); ?>" >
                     <?php 
-                    echo '<b>Código:</b>';
+                    echo '<b>Descrição:</b>';
                     $atributos = array(
-                        'name'  =>  'codigo',
+                        'name'  =>  'descricao',
                         'class' =>  'form-control',
-                        'type'  =>  'number'
-                    );
-                    echo form_input($atributos).br();
-                    
-                    echo '<b>Nome:</b>';
-                    $atributos = array(
-                        'name'  =>  'nome',
-                        'class' =>  'form-control',
-                    );
-                    echo form_input($atributos).br();
-                    
-                    $op = array();
-                    $op[NULL] = '---';
-                    
-                    echo '<table>';
-                        echo '<tr><td width="40%"><b>Tipo:</b></td>';
-                        
-                        $atributos = array(
-                            'name' => 'tipo',
-                            'value' => 'COMERCIO',
-                        );
-                        echo '<td>'.form_radio($atributos).nbs().'COMERCIO</td></tr>';
-
-                        echo '<tr><td></td>';
-                        $atributos = array(
-                            'name' => 'tipo',
-                            'value' => 'SERVICO',
-                        );
-                        echo '<td>'.form_radio($atributos).nbs().'SERVICO</td></tr>';
-                    echo '</table><br>';
-
-                    echo '<b>ID Facebook:</b>';
-                    $atributos = array(
-                        'name'  =>  'id_facebook',
-                        'class' =>  'form-control',
-                    );
-                    echo form_input($atributos).br();
-                    
-                    echo '<b>Inscrição Municipal:</b>';
-                    $atributos = array(
-                        'name'  =>  'im',
-                        'class' =>  'form-control',
-                        'type'  =>  'number'
-                    );
-                    echo form_input($atributos).br();
-                    
-                    echo '<b>CNPJ:</b>';
-                    $atributos = array(
-                        'name'  =>  'cnpj',
-                        'class' =>  'form-control cnpj',
-                    );
-                    echo form_input($atributos).br();
-                    
-                    echo '<b>Endereço:</b>';
-                    $atributos = array(
-                        'name'  =>  'endereco',
-                        'class' =>  'form-control',
-                    );
-                    echo form_input($atributos).br();
-                    
-                    echo '<b>Data de Inscrição:</b>';
-                    $atributos = array(
-                        'name'  =>  'data_inscricao',
-                        'class' =>  'form-control data',
                     );
                     echo form_input($atributos).br();
               ?>
@@ -138,96 +73,25 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade bs-example-modal-lg " id="modal_editar_empresa" >
+<div class="modal fade bs-example-modal-lg " id="modal_editar_categoria" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header corTextoModal">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
-                <h4 class="modal-title">Editar Empresa</h4>
+                <h4 class="modal-title">Editar Categoria</h4>
             </div>
             <div class="modal-body">
-                <form role="form" method="post" id="editarEmpresa" action="<?php echo base_url('empresas/gerenciar_empresas/salvar'); ?>" >
+                <form role="form" method="post" id="editarEmpresa" action="<?php echo base_url('empresas/categorias/editar'); ?>" >
                     <?php 
-                    echo '<b>Código:</b>';
+                    echo '<b>Descrição:</b>';
                     $atributos = array(
-                        'name'  =>  'codigo',
-                        'id'    =>  'codigo_edt',
-                        'class' =>  'form-control',
-                        'type'  =>  'number'
-                    );
-                    echo form_input($atributos).br();
-                    
-                    echo '<b>Nome:</b>';
-                    $atributos = array(
-                        'name'  =>  'nome',
-                        'id'  =>  'nome_edt',
+                        'name'  =>  'descricao',
+                        'id'    =>  'descricao_editar',
                         'class' =>  'form-control',
                     );
                     echo form_input($atributos).br();
-                    
-                    $op = array();
-                    $op[NULL] = '---';
-                    
-                    echo '<table>';
-                        echo '<tr><td width="40%"><b>Tipo:</b></td>';
-                        
-                        $atributos = array(
-                            'name' => 'tipo',
-                            'id' => 'tipo_edtCOMERCIO',
-                            'value' => 'COMERCIO',
-                        );
-                        echo '<td>'.form_radio($atributos).nbs().'COMERCIO</td></tr>';
-
-                        echo '<tr><td></td>';
-                        $atributos = array(
-                            'name' => 'tipo',
-                            'id' => 'tipo_edtSERVICO',
-                            'value' => 'SERVICO',
-                        );
-                        echo '<td>'.form_radio($atributos).nbs().'SERVICO</td></tr>';
-                    echo '</table><br>';
-
-                    echo '<b>ID Facebook:</b>';
-                    $atributos = array(
-                        'name'  =>  'id_facebook',
-                        'id'  =>  'id_facebook_edt',
-                        'class' =>  'form-control',
-                    );
-                    echo form_input($atributos).br();
-                    
-                    echo '<b>Inscrição Municipal:</b>';
-                    $atributos = array(
-                        'name'  =>  'im',
-                        'id'  =>  'im_edt',
-                        'class' =>  'form-control',
-                        'type'  =>  'number'
-                    );
-                    echo form_input($atributos).br();
-                    
-                    echo '<b>CNPJ:</b>';
-                    $atributos = array(
-                        'name'  =>  'cnpj',
-                        'id'  =>  'cnpj_edt',
-                        'class' =>  'form-control cnpj',
-                    );
-                    echo form_input($atributos).br();
-                    
-                    echo '<b>Endereço:</b>';
-                    $atributos = array(
-                        'name'  =>  'endereco',
-                        'id'  =>  'endereco_edt',
-                        'class' =>  'form-control',
-                    );
-                    echo form_input($atributos).br();
-                    
-                    echo '<b>Data de Inscrição:</b>';
-                    $atributos = array(
-                        'name'  =>  'data_inscricao',
-                        'id'  =>  'data_inscricao_edt',
-                        'class' =>  'form-control data',
-                    );
-                    echo form_input($atributos).br(); ?>
-                <input class="form-control" type="hidden" id="id_empresa_edt" name="id_empresa">
+                    ?>
+                <input class="form-control" type="hidden" id="id_editar" name="id_editar">
             </div>
             <div class="modal-footer">
                 <p align="left">

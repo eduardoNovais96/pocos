@@ -33,11 +33,11 @@ function novo_modal() {
  * Scripts para o menu.
  */
 function modal_editar_categoria(id) {
-    $.post(base_url + 'menu/categorias/dados_categoria', {
+    $.post(base_url + 'empresas/categorias/dados_categoria', {
         id: id
     }, function (data) {
         $('#descricao_editar').val(data.descricao);
-        $('#id_editar').val(data.id);
+        $('#id_editar').val(id);
     }, 'json');
     $('#modal_editar_categoria').modal('show');
 }
