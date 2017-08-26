@@ -181,4 +181,30 @@ class Gerenciar_empresas extends CI_Controller{
         }
         
     }
+    
+    public function AtualizarEmpresaComDadosReceita() {
+        
+        $empresa = array(
+            'id'                      => $this->input->post('id'),
+            'receita_data_situacao'   => $this->input->post('data_situacao'),
+            'receita_motivo_situacao' => $this->input->post('motivo_situacao'),
+            'receita_telefone'        => $this->input->post('telefone'),
+            'receita_email'           => $this->input->post('email'),
+            'receita_situacao'        => $this->input->post('situacao'),
+            'receita_tipo'            => $this->input->post('tipo'),
+        );
+        
+        $this->em->update_empresa($empresa);
+        
+        $proximaEmpresa = $this->em->BuscarPorId($empresa['id']++);
+        
+        if($proximaEmpresa) {
+            
+            echo json_encode(array('proximaEmpresa' => $proximaEmpresa, 'acabou' => '0'));
+        }
+        else {
+            
+            echo json_encode(array('acabou' => '1'));
+        }
+    }
 }
