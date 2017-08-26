@@ -1,10 +1,3 @@
-<?php
-//<!-- Bootstrap -->
-//        echo link_tag('assets/bootstrap/css/bootstrap.min.css', 'stylesheet', 'text/css', 'screen');
-//        lnbreak();
-//        echo script_tag('assets/bootstrap/js/bootstrap.min.js', 'text/javascript');
-//        lnbreak();
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Avicultura</title>
+        <title>Poços</title>
         <?php
         //<!-- Bootstrap -->
         echo link_tag('assets/vendors/bootstrap/dist/css/bootstrap.min.css', 'stylesheet', 'text/css', 'screen');
@@ -44,8 +37,8 @@
                         <div class="left_col scroll-view">
                             <div class="navbar nav_title" style="border: 0;">
                                 <a href="<?php echo base_url(); ?>" class="site_title">
-                                    <div class="profile_pic"><img src="<?php echo base_url('assets/img/logo.png');?>" width="100%"></div>
-                                    <span>Avicultura</span></a>
+                                    <div class="profile_pic"><img src="<?php echo base_url('assets/img/night.jpg');?>" width="100%"></div>
+                                    <span>Poços</span></a>
                             </div>
 
                             <div class="clearfix"></div>

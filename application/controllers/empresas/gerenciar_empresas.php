@@ -14,6 +14,7 @@ class Gerenciar_empresas extends CI_Controller{
         $sess['empresa'] = NULL;
         $sess['im'] = NULL;
         $sess['cnpj'] = NULL;
+        $sess['tipo'] = NULL;
         $sess['qtd'] = 10;
         $maximo = 10;
         $this->session->set_userdata($sess);
@@ -101,11 +102,24 @@ class Gerenciar_empresas extends CI_Controller{
             $sess['qtd'] = 10;
             $maximo = 10;
         }
+        
+        if(@$this->input->post('tipo')){
+            $sess['tipo'] = $this->input->post('tipo');
+            $tipo = $this->input->post('tipo');
+        }
+        else if($this->session->userdata['tipo']){
+            $sess['tipo'] = $this->session->userdata['tipo'];
+            $tipo = $this->session->userdata['tipo'];
+        }
+        else{
+            $sess['tipo'] = NULL;
+            $tipo = NULL;
+        }
 
         $this->session->set_userdata($sess);
 
         $config['base_url'] = '/pocos/empresas/gerenciar_empresas/filtro';
-        $config['total_rows'] = $this->em->count_all($im, $cnpj);
+        $config['total_rows'] = $this->em->count_all($im, $cnpj, $tipo);
         if($maximo == 'todos'){
             $maximo = $this->em->count_all();
             $inicio = 0;
@@ -141,7 +155,7 @@ class Gerenciar_empresas extends CI_Controller{
         $this->pagination->initialize($config);
 
         $data['paginacao'] = $this->pagination->create_links();
-        $data['empresas'] = $this->em->get_all($maximo, $inicio, $im, $cnpj);
+        $data['empresas'] = $this->em->get_all($maximo, $inicio, $im, $cnpj, NULL, $tipo);
         $data['total'] = $config['total_rows'];
 
         $data['pagina']   = 'empresas/gerenciar_empresas';

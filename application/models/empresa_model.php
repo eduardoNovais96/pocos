@@ -4,7 +4,7 @@ class Empresa_model extends CI_Model{
     function __construct() {
         parent::__construct();
     }
-    function get_all($max = NULL, $inic = NULL, $ie = NULL, $cnpj = NULL, $id_empresa = NULL){
+    function get_all($max = NULL, $inic = NULL, $ie = NULL, $cnpj = NULL, $id_empresa = NULL, $tipo = NULL){
         $this->db->select('*');
         $this->db->from('empresas');
         
@@ -16,13 +16,17 @@ class Empresa_model extends CI_Model{
             $this->db->where('id', $id_empresa);
         if($max!=NULL)
             $this->db->limit($max, $inic);
+        if($tipo!=NULL)
+            $this->db->where('tipo', $tipo);
         return $this->db->get()->result();
     }
-    function count_all($ie = NULL, $cnpj = NULL){
+    function count_all($ie = NULL, $cnpj = NULL, $tipo = NULL){
         if($ie!=NULL)
             $this->db->like('inscricao_municipal', $ie);
         if($cnpj!=NULL)
             $this->db->like('documento', $cnpj);
+        if($tipo!=NULL)
+            $this->db->where('tipo', $tipo);
         return $this->db->count_all_results('empresas');
     }
     function set_empresa($dados){

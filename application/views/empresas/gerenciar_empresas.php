@@ -5,17 +5,19 @@
     <div class="panel-body">
         <?php
             echo form_open('empresas/gerenciar_empresas/filtro');
-                echo '<table width="90%" align="center">';
+                echo '<table width="100%" align="center">';
                     $im = @$this->session->userdata['im'];
                     $cnpj = @$this->session->userdata['cnpj'];
+                    $tipo = @$this->session->userdata['tipo'];
+                    
                     $atributos = array(
                         'name'  =>  'im',
                         'id'    =>  'im',
                         'class' =>  'form-control',
                         'value' =>  $im
                     );
-                    echo '<tr><td width="20%" align="right">'.form_label('Inscrição Estadual: ').nbs(2).'</td>';
-                    echo '<td width="35%">'.form_input($atributos).'</td>';
+                    echo '<tr><td width="15%" align="right">'.form_label('Inscrição Estadual: ').nbs(2).'</td>';
+                    echo '<td width="25%">'.form_input($atributos).'</td>';
                     
                     $atributos = array(
                         'name'  =>  'cnpj',
@@ -24,7 +26,13 @@
                         'value' =>  $cnpj
                     );
                     echo '<td width="10%" align="right">'.form_label('CNPJ: ').nbs(2).'</td>';
-                    echo '<td width="35%">'.form_input($atributos).'</td></tr>';
+                    echo '<td width="25%">'.form_input($atributos).'</td>';
+                    
+                    $op[NULL] = '---';
+                    $op['COMERCIO'] = 'COMERCIO';
+                    $op['SERVICO'] = 'SERVICO';
+                    echo '<td width="10%" align="right">'.form_label('Tipo Empresa: ').nbs(2).'</td>';
+                    echo '<td width="20%">'.form_dropdown('tipo', $op, $tipo, 'class="form-control"').'</td></tr>';
                 echo '</table>';
                 
                 $atributos = array(
@@ -289,8 +297,7 @@
                         'id'  =>  'data_inscricao_edt',
                         'class' =>  'form-control data',
                     );
-                    echo form_input($atributos).br();
-              ?>
+                    echo form_input($atributos).br(); ?>
                 <input class="form-control" type="hidden" id="id_empresa_edt" name="id_empresa">
             </div>
             <div class="modal-footer">
