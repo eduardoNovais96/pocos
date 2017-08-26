@@ -156,7 +156,7 @@ function atualizarComAReceitaAsEmpresas() {
     buscarEAtualizarEmpresa();
 }
 
-function buscarEAtualizarEmpresa(empresa){
+function buscarEAtualizarEmpresa(){
     
     $.ajax({
         url: $('#baseUrl').val() + 'empresas/gerenciar_empresas/buscarEAtualizarComReceita/' + de,
@@ -191,11 +191,19 @@ function buscarEAtualizarEmpresa(empresa){
         error: function() {
             
             errosReceita++;
-            de++;
             informacoes[informacoes.length] = "<span style='color:red;'>" + de + " - OCORREU UM ERRO</span>";
             
-            mostrarInformacoesBuscasReceita();
-            buscarEAtualizarEmpresa();
+            if(de < ate) {
+             
+                de++;
+                mostrarInformacoesBuscasReceita();
+                buscarEAtualizarEmpresa();
+            }
+            else {
+                
+                $('#modalAtualizarEmpresasComReceita #mensagem').append('<br><br><span style="color: green;">OPERAÇÃO FINALIZADA</span><br><span> - Sucessos: ' + sucessoReceita + ' </span><span> - Erros: ' + errosReceita + '</span>');
+                $('#atualizarEmpresas').removeAttr('disabled');
+            }
         }
     });
 };
