@@ -70,4 +70,8 @@ class Alertas_model extends CI_Model{
         $this->db->where('id_contato', $id_baixa);
         return $this->db->update('contatos',$dados);
     }
+    
+    function set_contato($dados){
+        return $this->db->insert('contatos', $dados);
+    }
 }

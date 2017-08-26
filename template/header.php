@@ -26,11 +26,12 @@
                 <ul id="ulnav" class="navbar-nav navlinksA mx-auto">
                     <li  class="nav-item">
                         <a class="nav-link" href="<?php echo base_url('site'); ?>"> Home </a><span class="separador">|</span>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('site/empresas'); ?>">Empresas</a><span class="separador">|</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('contato'); ?>"> Contato </a>  </a>
+                        <a class="nav-link" href="<?php echo base_url('site/busca'); ?>">Empresas</a><span class="separador">|</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php // echo base_url('contato'); ?>"> Contato </a>  </a>
                     </li>
                 </ul>
                 <ul id="search" class="navbar-nav navlinksA search">
@@ -53,18 +54,18 @@
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <?php echo form_open(base_url('site/busca')); ?>
-                    <div class="row fakenav bg-white">
-                        <div class="col">
-                        </div>
-                        <div class="col-md-8">
-                            <input placeholder="Digite sua busca e pressione Enter" class="fill placeholder" type="text" name="busca"/>
-                        </div>
-                        <div class="col">
-                            <button  type="button" class="fechamodal close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                <div class="row fakenav bg-white">
+                    <div class="col">
                     </div>
+                    <div class="col-md-8">
+                        <input placeholder="Digite sua busca e pressione Enter" class="fill placeholder" type="text" name="busca"/>
+                    </div>
+                    <div class="col">
+                        <button  type="button" class="fechamodal close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
                 <?php echo form_close(); ?>
             </div>
         </div>

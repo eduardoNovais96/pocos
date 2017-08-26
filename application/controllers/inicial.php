@@ -19,6 +19,6 @@ class Inicial extends CI_Controller {
         public function sair(){
             $this->session->sess_destroy();
             $this->nativesession->delete_all();
-            redirect('inicial');
+            redirect(base_url('login/logar'));
         }
 }

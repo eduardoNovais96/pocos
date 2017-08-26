@@ -135,6 +135,22 @@ class Contatos extends CI_Controller{
         $this->load->view('template',$dados);
     }
     
+    public function salvar(){
+        $dados['nome'] = $this->input->post('nome');
+        $dados['telefone'] = $this->input->post('telefone');
+        $dados['email'] = $this->input->post('email');
+        $dados['mensagem'] = $this->input->post('mensagem');
+        
+        if($this->am->set_contato($dados))
+            $msg = '<div class="alert alert-block alert-success">Mensagem enviada com sucesso.</div>';
+        else
+            $msg = '<div class="alert alert-block alert-danger">Algo inesperado aconteceu</div>';
+        
+        $this->session->set_userdata('msg', $msg);
+        redirect(base_url('contato'));
+        
+    }
+    
     public function dados_contato($id){
         $contato = $this->am->get_contatos($id);
 
