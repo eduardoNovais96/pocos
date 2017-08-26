@@ -58,6 +58,7 @@ class Gerenciar_empresas extends CI_Controller{
 
         $data['paginacao'] = $this->pagination->create_links();
         $data['empresas'] = $this->em->get_all($maximo, $inicio);
+        $data['categorias'] = $this->em->get_categorias();
         $data['total'] = $config['total_rows'];
 
         $data['pagina']   = 'empresas/gerenciar_empresas';
@@ -156,6 +157,7 @@ class Gerenciar_empresas extends CI_Controller{
 
         $data['paginacao'] = $this->pagination->create_links();
         $data['empresas'] = $this->em->get_all($maximo, $inicio, $im, $cnpj, NULL, $tipo);
+        $data['categorias'] = $this->em->get_categorias();
         $data['total'] = $config['total_rows'];
 
         $data['pagina']   = 'empresas/gerenciar_empresas';

@@ -136,8 +136,9 @@ function editar_empresa(id) {
         $('#endereco_edt').val(data.endereco);
         $('#data_inscricao_edt').val(data.data_inscricao);
         $('#id_empresa_edt').val(id);
+        $('#tipo_edt').val(data.tipo);
         
-        document.getElementById("tipo_edt"+data.tipo).checked = true;
+//        document.getElementById("tipo_edt"+data.tipo).checked = true;
         
     }, 'json');
     $('#modal_editar_empresa').modal('show');

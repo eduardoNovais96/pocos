@@ -48,8 +48,10 @@ echo form_input(array(
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Tipo Empresa:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12"> <?php
                             $op[NULL] = '---';
-                            $op['COMERCIO'] = 'COMERCIO';
-                            $op['SERVICO'] = 'SERVICO';
+                            foreach($categorias as $c){
+                                $op[$c->categoria] = $c->categoria;
+                                $op[$c->categoria] = $c->categoria;
+                            }
     //                        echo '<td width="10%" align="right">'.form_label('Tipo Empresa: ').nbs(2).'</td>';
                             echo form_dropdown('tipo', $op, $tipo, 'class="form-control"'); ?>
                         </div>
@@ -172,22 +174,28 @@ echo form_input(array(
                     $op = array();
                     $op[NULL] = '---';
                     
-                    echo '<table>';
-                        echo '<tr><td width="40%"><b>Tipo:</b></td>';
-                        
-                        $atributos = array(
-                            'name' => 'tipo',
-                            'value' => 'COMERCIO',
-                        );
-                        echo '<td>'.form_radio($atributos).nbs().'COMERCIO</td></tr>';
-
-                        echo '<tr><td></td>';
-                        $atributos = array(
-                            'name' => 'tipo',
-                            'value' => 'SERVICO',
-                        );
-                        echo '<td>'.form_radio($atributos).nbs().'SERVICO</td></tr>';
-                    echo '</table><br>';
+//                    echo '<table>';
+//                        echo '<tr><td width="40%"><b>Tipo:</b></td>';
+//                        
+//                        $atributos = array(
+//                            'name' => 'tipo',
+//                            'value' => 'COMERCIO',
+//                        );
+//                        echo '<td>'.form_radio($atributos).nbs().'COMERCIO</td></tr>';
+//
+//                        echo '<tr><td></td>';
+//                        $atributos = array(
+//                            'name' => 'tipo',
+//                            'value' => 'SERVICO',
+//                        );
+//                        echo '<td>'.form_radio($atributos).nbs().'SERVICO</td></tr>';
+//                    echo '</table><br>';
+                    $op[NULL] = '---';
+                    foreach($categorias as $c){
+                        $op[$c->categoria] = $c->categoria;
+                    }
+                    echo '<tr><td width="40%"><b>Tipo:</b></td>';
+                    echo form_dropdown('tipo', $op, '', 'class="form-control"').br();
 
                     echo '<b>ID Facebook:</b>';
                     $atributos = array(
@@ -276,24 +284,30 @@ echo form_input(array(
                     $op = array();
                     $op[NULL] = '---';
                     
-                    echo '<table>';
-                        echo '<tr><td width="40%"><b>Tipo:</b></td>';
-                        
-                        $atributos = array(
-                            'name' => 'tipo',
-                            'id' => 'tipo_edtCOMERCIO',
-                            'value' => 'COMERCIO',
-                        );
-                        echo '<td>'.form_radio($atributos).nbs().'COMERCIO</td></tr>';
-
-                        echo '<tr><td></td>';
-                        $atributos = array(
-                            'name' => 'tipo',
-                            'id' => 'tipo_edtSERVICO',
-                            'value' => 'SERVICO',
-                        );
-                        echo '<td>'.form_radio($atributos).nbs().'SERVICO</td></tr>';
-                    echo '</table><br>';
+//                    echo '<table>';
+//                        echo '<tr><td width="40%"><b>Tipo:</b></td>';
+//                        
+//                        $atributos = array(
+//                            'name' => 'tipo',
+//                            'id' => 'tipo_edtCOMERCIO',
+//                            'value' => 'COMERCIO',
+//                        );
+//                        echo '<td>'.form_radio($atributos).nbs().'COMERCIO</td></tr>';
+//
+//                        echo '<tr><td></td>';
+//                        $atributos = array(
+//                            'name' => 'tipo',
+//                            'id' => 'tipo_edtSERVICO',
+//                            'value' => 'SERVICO',
+//                        );
+//                        echo '<td>'.form_radio($atributos).nbs().'SERVICO</td></tr>';
+//                    echo '</table><br>';
+                    $op[NULL] = '---';
+                    foreach($categorias as $c){
+                        $op[$c->categoria] = $c->categoria;
+                    }
+                    echo '<tr><td width="40%"><b>Tipo:</b></td>';
+                    echo form_dropdown('tipo', $op, '', 'class="form-control" id="tipo_edt"').br();
 
                     echo '<b>ID Facebook:</b>';
                     $atributos = array(
