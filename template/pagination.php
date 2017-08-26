@@ -29,10 +29,10 @@ $this->load->view('../../template/header2.php');
                 <a href="<?php echo base_url('site/empresa/detalhes/' . $empresas[$i]->id);?>"><?php echo $empresas[$i]->nome;?></a>
             </div>
             <?php
-            if(count($empresas)%2 == 0) {
+            if(count($empresas) > $i+1) {
             ?>
                 <div class="col paginaisso colpagination">
-                    <a href="<?php echo base_url('site/empresa/detalhes/' . $empresas[$i]->id);?>"><?php echo $empresas[$i+1]->nome;?></a>
+                    <a href="<?php echo base_url('site/empresa/detalhes/' . $empresas[$i+1]->id);?>"><?php echo $empresas[$i+1]->nome;?></a>
                 </div>
             <?php } ?>
         </div>

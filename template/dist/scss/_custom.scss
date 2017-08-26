@@ -7,6 +7,31 @@ and open the template in the editor.
     Created on : 13/08/2017, 20:59:33
     Author     : abner
 */
+
+.facebook{
+    display: none;
+    .titulo{
+        margin-top: 40px;
+        h1{
+            font-family: asap;
+            color: $smokyblack !important;
+
+        }
+        p{
+            font-family: asap;
+            color: $smokyblack !important;
+        }
+        hr{
+            border: 2px solid $smokyblack;
+            width: 140px;
+        }
+    }
+}
+.colborder{
+    border: 1px solid #0D0A0B;
+
+}
+
 @font-face {
     font-family: ubuntu;
     src: url(../../assets/fonts/Ubuntu-L.ttf);
@@ -54,8 +79,8 @@ and open the template in the editor.
 }
 .paginaisso{
     UL {
-    list-style: none;
-     width: 100%;
+        list-style: none;
+        width: 100%;
     }
     a{
         text-decoration: none;
@@ -99,9 +124,11 @@ and open the template in the editor.
     .red{
         color: $red !important;
     }
-    
-}
 
+}
+.yellow{
+    color:$yellow;
+}
 .fakenav{
     width: 100% !important;
     height: 100px !important;
@@ -121,7 +148,7 @@ and open the template in the editor.
     height:100% !important;
     border: none;
     &:focus{
-         outline:none;
+        outline:none;
     }
 
 }
@@ -134,10 +161,10 @@ and open the template in the editor.
 
 
 .navbar{
-		background-color: transparent !important;
+    background-color: transparent !important;
     font-family: ubuntu !important;
     height: 100px !important;
-   // border-bottom: solid black 2px !important;
+    // border-bottom: solid black 2px !important;
     .navbar-brand{
         font-color: $platium !important;
     }
@@ -150,70 +177,70 @@ and open the template in the editor.
         font-size:50px;
         font-family: asap;
     }
-	a{
-    	color: $white !important;
-    	font-weight:bold;
-    	text-decoration: none !important;
-   }
-   i{
-       color: $white !important;
-       font-size:30px;
-       margin-bottom: 10px;
-       margin-right: 30px;
+    a{
+        color: $white !important;
+        font-weight:bold;
+        text-decoration: none !important;
     }
-   .separador{
+    i{
+        color: $white !important;
+        font-size:30px;
+        margin-bottom: 10px;
+        margin-right: 30px;
+    }
+    .separador{
         display:none;
     }
-   a:hover{
-   		color: $red !important;
-   		font-weight:bold;
-    	text-decoration: none !important;
-   }
+    a:hover{
+        color: $red !important;
+        font-weight:bold;
+        text-decoration: none !important;
+    }
     i:hover{
-       color: $red !important;
-       font-size:30px;
+        color: $red !important;
+        font-size:30px;
         cursor: pointer;
     }
 }
 
 .logo{
-	width: auto;
-	height: 80px;
+    width: auto;
+    height: 80px;
 }
 
 .margintopsm{
-	margin-top: 20px !important; 	
+    margin-top: 20px !important; 	
 }
 
 .tab{
-	image{
-		border: 1px black solid;
-	}
+    image{
+        border: 1px black solid;
+    }
 }
 
 .pctop{
-	height: 350px !important;
-	margin-top: 200px;
-	width:auto;
-	&:hover{
-		height: 400px !important;
-		margin-top: 200px;
-		width:auto;
-	}
+    height: 350px !important;
+    margin-top: 200px;
+    width:auto;
+    &:hover{
+        height: 400px !important;
+        margin-top: 200px;
+        width:auto;
+    }
 }
 
 
 .texto{
     color: $smokyblack;
-	font-family: asap !important;
-	h1{
-		font-size: 40px;
-		margin-top:50px;
-	}
-	hr{
+    font-family: asap !important;
+    h1{
+        font-size: 40px;
+        margin-top:50px;
+    }
+    hr{
         border: 2px solid $smokyblack;
         width: 200px;
-	}
+    }
     p{
         font-size: 20px;
         font-family: corbel;
@@ -222,22 +249,22 @@ and open the template in the editor.
 }
 
 .footer{
-	font-family: ubuntu !important;
-	margin-top:50px;
-	margin-bottom:20px;
+    font-family: ubuntu !important;
+    margin-top:50px;
+    margin-bottom:20px;
     height: 320px !important;
-	p{
-    	color: $white !important;
-    	font-weight: bold;
-  }
-  a{
-  		color: $tuftsblue !important;
-  }
+    p{
+        color: $white !important;
+        font-weight: bold;
+    }
+    a{
+        color: $tuftsblue !important;
+    }
     .footeritem{
         h1{
-         color: $smokyblack;
-        margin-top:10px;
-        font-family: asap;
+            color: $smokyblack;
+            margin-top:10px;
+            font-family: asap;
         }
         a{
             font-size: 20px;
@@ -247,7 +274,7 @@ and open the template in the editor.
         hr{
             border: 2px solid $white;
             width: 120px;
-	    }
+        }
         .logo{
             height: 180px;
             width: auto;
@@ -257,14 +284,14 @@ and open the template in the editor.
             color:$white;
             font-family: asap;
             font-size: 60px;
-            
+
         }
     }
 }
 
 .bigsquare{
-	  p{
-    	margin-top:20px;
+    p{
+        margin-top:20px;
     }
     font-family: ubuntu !important;
     font-size: 20px;
@@ -275,61 +302,61 @@ and open the template in the editor.
     .trans{
         background-color: transparent !important;
     }
-     .btn:focus,.btn:active {
-           outline: none !important;
+    .btn:focus,.btn:active {
+        outline: none !important;
     }
-        button:focus {
-          outline: none !important;
-        }
+    button:focus {
+        outline: none !important;
+    }
 }
 
 .modal{
     width: 100% !important;
 }
 .modal-dialog {
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  padding: 0;
-  max-width: 100% !important;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0;
+    max-width: 100% !important;
 }
 
 .modal-content {
-  height: auto;
-  min-height: 100%;
-  border-radius: 0;
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
 }
 
 .navlinksB{
-     .textlogo{
+    .textlogo{
         color:$smokyblack;
         font-size:50px;
         font-family: asap;
     }
-	a{
-    	color: $smokyblack !important;
-    	font-weight:bold;
-    	text-decoration: none !important;
+    a{
+        color: $smokyblack !important;
+        font-weight:bold;
+        text-decoration: none !important;
         display: inline-block;
-   }
-   a:hover{
-   		color: $tuftsblue !important;
-   		font-weight:bold;
-    	text-decoration: none !important;
-   }
+    }
+    a:hover{
+        color: $tuftsblue !important;
+        font-weight:bold;
+        text-decoration: none !important;
+    }
     .separador{
         font-weight:bold;
         color: $smokyblack !important;
     }
     i{
-       color: $smokyblack !important;
-       font-size:30px;
-      margin-bottom: 10px;
-       margin-right: 30px;
+        color: $smokyblack !important;
+        font-size:30px;
+        margin-bottom: 10px;
+        margin-right: 30px;
     }
-     i:hover{
-       color: $tuftsblue !important;
-       font-size:30px;
+    i:hover{
+        color: $tuftsblue !important;
+        font-size:30px;
     }
 }
 
@@ -355,15 +382,15 @@ and open the template in the editor.
 
 .gradient{
 
-   /* background-color: $red4;
-    background-image: -webkit-linear-gradient(-50deg, $red4 65%, $white 35%);
-    min-height: 500px;
- */
+    /* background-color: $red4;
+     background-image: -webkit-linear-gradient(-50deg, $red4 65%, $white 35%);
+     min-height: 500px;
+    */
 }
 
 .fixedTop {
-  top: 0;
-  margin: 0 !important;
+    top: 0;
+    margin: 0 !important;
 }
 
 .center-div{
@@ -392,7 +419,7 @@ and open the template in the editor.
     }
     h2{
         font-size: 20px;
-         margin-top: 20px;
+        margin-top: 20px;
     }
     p{
         font-family: corbel;
@@ -403,25 +430,19 @@ and open the template in the editor.
         font-size: 30px;
         margin-bottom: 20px;
     }
-    
-}
 
-
-
-.colborder{
-    border: 1px 1px 1px 1px black solid !important;
 }
 
 .square{
     img{
-    	padding-top:25%;
+        padding-top:25%;
     }
     a{
-    	 text-decoration: none !important;
+        text-decoration: none !important;
     }
     p{
-    	margin-top:5px;
-    	color: $white !important;
+        margin-top:5px;
+        color: $white !important;
     }
     font-family: ubuntu !important;
     color: #fff;

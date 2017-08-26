@@ -57,7 +57,7 @@ $this->load->view('../../template/header.php');
                 <br>
                 <br>
             </p>
-            <button class="btn btn-primary">Leia Mais</button>
+            <?php // <button class="btn btn-primary">Leia Mais</button> ?>
         </div>
         <div class="col colgrid text-center">
             <h1>02.</h1>
@@ -70,7 +70,7 @@ $this->load->view('../../template/header.php');
                 independente do dia e do horário, podem consumir o teu
                 conteúdo.
             </p>
-            <button class="btn btn-primary">Leia Mais</button>
+           <?php // <button class="btn btn-primary">Leia Mais</button> ?>
         </div>
         <div class="col colgrid text-center">
             <h1>03.</h1>
@@ -82,7 +82,7 @@ $this->load->view('../../template/header.php');
                 tradicionalmente, uma mídia offline. Então o custo-benefício
                 da divulgação nas mídias digitais é muito interessante.
             </p>
-            <button class="btn btn-primary">Leia Mais</button>
+             <?php  // <button class="btn btn-primary">Leia Mais</button> ?>
         </div>
     </div>
 </div>
