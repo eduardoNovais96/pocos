@@ -26,4 +26,20 @@ class Empresa_model extends CI_Model{
     function set_empresa($dados){
         return $this->db->insert('empresas',$dados);
     }
+    
+    public function BuscarPorId($id) {
+        
+        $query = $this->db->select('*')
+                    ->from('empresas')
+                    ->where('id', $id)                    
+                    ->get();
+        
+        return $query->row();
+    }
+    
+    function Atualizar($empresa) {
+                
+        $this->db->where('id', $empresa['id']);
+        return $this->db->update('empresas', $objeto);  
+    }
 }
