@@ -1,0 +1,25 @@
+.pagination a{
+    border-radius: 0px!important;
+    margin-right: 3px;
+    border: none;
+    background-color: #e6e6e6;
+}
+
+.pagination .active a{
+    background-color: #a9abae;
+}
+
+.pagination .navegacao a{
+    background-color: #FF0000 !important;
+    color: white !important;
+    text-transform: uppercase;
+}
+
+.pagination .page-item a{
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #454955;
+}

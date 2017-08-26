@@ -13,6 +13,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo base_url('template/assets/js/navfade.js'); ?>"></script>
         <link href="<?php echo base_url('template/dist/css/bootstrap.css'); ?>" rel="stylesheet">
+        <link href="<?php echo base_url('template/assets/css/custom.css'); ?>" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <?php /* wp_head();  */ ?>
     </head>

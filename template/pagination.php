@@ -23,25 +23,24 @@ $this->load->view('../../template/header2.php');
             <p>Explore algumas das melhores dicas de toda a cidade de nossos parceiros e amigos.</p>
         </div>
     </div>
-    <?php for ($i=0; $i<count($empresas); $i+=2) {?>
+    <?php for ($i = 0; $i < count($empresas); $i+=2) { ?>
         <div class="row">
             <div class="col paginaisso colpagination bg-cinzinhaT">
-                <a href="<?php echo base_url('site/empresa/detalhes/' . $empresas[$i]->id);?>"><?php echo $empresas[$i]->nome;?></a>
+                <a href="<?php echo base_url('site/empresa/detalhes/' . $empresas[$i]->id); ?>"><?php echo $empresas[$i]->nome; ?></a>
             </div>
             <?php
-            if(count($empresas)%2 == 0) {
-            ?>
+            if (count($empresas) % 2 == 0) {
+                ?>
                 <div class="col paginaisso colpagination">
-                    <a href="<?php echo base_url('site/empresa/detalhes/' . $empresas[$i]->id);?>"><?php echo $empresas[$i+1]->nome;?></a>
+                    <a href="<?php echo base_url('site/empresa/detalhes/' . $empresas[$i]->id); ?>"><?php echo $empresas[$i + 1]->nome; ?></a>
                 </div>
             <?php } ?>
         </div>
     <?php } ?>
     <div class="row">
-        <p>Total de Registros: <?php echo $total;?></p>
+        <p>Total de Registros: <?php echo $total; ?></p>
     </div>
-    
-    <?php echo $paginacao;?>
+    <?php echo $paginacao; ?>
 </div>
 <?php
 $this->load->view('../../template/footer.php');
