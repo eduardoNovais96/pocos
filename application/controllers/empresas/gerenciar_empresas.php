@@ -152,7 +152,7 @@ class Gerenciar_empresas extends CI_Controller{
         $this->form_validation->set_rules('nome', 'Nome', 'required');
         $this->form_validation->set_rules('tipo', 'Tipo', 'required');
         $this->form_validation->set_rules('nome', 'Nome', 'required');
-        $this->form_validation->set_rules('ie', 'Inscrição Estadual', 'required');
+        $this->form_validation->set_rules('im', 'Inscrição Estadual', 'required');
         $this->form_validation->set_rules('cnpj', 'CNPJ', 'required');
         $this->form_validation->set_rules('endereco', 'Endereço', 'required');
         $this->form_validation->set_rules('data_inscricao', 'Data de Inscrição', 'required');
@@ -167,7 +167,7 @@ class Gerenciar_empresas extends CI_Controller{
             $dados['codigo'] = $this->input->post('codigo');
             $dados['tipo'] = $this->input->post('tipo');
             $dados['nome'] = $this->input->post('nome');
-            $dados['inscricao_municipal'] = $this->input->post('ie');
+            $dados['inscricao_municipal'] = $this->input->post('im');
             $dados['documento']= $this->input->post('cnpj');
             $dados['endereco']= $this->input->post('endereco');
             $dados['datainscricao']= $dt[2].'-'.$dt[1].'-'.$dt[0];
@@ -182,8 +182,57 @@ class Gerenciar_empresas extends CI_Controller{
         }
     }
     
+    public function salvar(){
+        $this->form_validation->set_rules('nome', 'Nome', 'required');
+        $this->form_validation->set_rules('tipo', 'Tipo', 'required');
+        $this->form_validation->set_rules('nome', 'Nome', 'required');
+        $this->form_validation->set_rules('im', 'Inscrição Estadual', 'required');
+        $this->form_validation->set_rules('cnpj', 'CNPJ', 'required');
+        $this->form_validation->set_rules('endereco', 'Endereço', 'required');
+        $this->form_validation->set_rules('data_inscricao', 'Data de Inscrição', 'required');
+        
+        $this->form_validation->set_error_delimiters('<div class="alert alert-block alert-danger fade in">','</div>');
+        
+        if($this->form_validation->run()==false)
+            $this->index();
+        else{
+            $dt = explode('/', $this->input->post('data_inscricao'));
+            
+            $dados['id'] = $this->input->post('id_empresa');
+            $dados['codigo'] = $this->input->post('codigo');
+            $dados['tipo'] = $this->input->post('tipo');
+            $dados['nome'] = $this->input->post('nome');
+            $dados['inscricao_municipal'] = $this->input->post('im');
+            $dados['documento']= $this->input->post('cnpj');
+            $dados['endereco']= $this->input->post('endereco');
+            $dados['datainscricao']= $dt[2].'-'.$dt[1].'-'.$dt[0];
+            
+            if($this->em->Atualizar($dados))
+                $mensagem = '<div class="alert alert-block alert-success fade in">Empresa atualizada com sucesso.</div>';
+            else
+                $mensagem = '<div class="alert alert-block alert-danger fade in">Algo inesperado aconteceu.</div>';
+            
+            $this->session->set_userdata('msg', $mensagem);
+            redirect(base_url('empresas/gerenciar_empresas'));
+        }
+    }
+    
     public function dados_empresa($id){
-        $empresa = $this->um->get_all(NULL, NULL, NULL, NULL, $id);
+        $empresa = $this->em->get_all(NULL, NULL, NULL, NULL, $id);
+
+        foreach($empresa as $e){
+            $dt = explode('-', $e->datainscricao);
+            
+            $dados['codigo'] = $e->codigo;
+            $dados['tipo'] = $e->tipo;
+            $dados['nome'] = $e->nome;
+            $dados['im'] = $e->inscricao_municipal;
+            $dados['cnpj'] = $e->documento;
+            $dados['endereco'] = $e->endereco;
+            $dados['data_inscricao']= $dt[2].'/'.$dt[1].'/'.$dt[0];
+        }
+        
+        echo json_encode($dados);
         
     }
 }

@@ -4,7 +4,7 @@ class Empresa_model extends CI_Model{
     function __construct() {
         parent::__construct();
     }
-    function get_all($max, $inic, $ie = NULL, $cnpj = NULL, $id_empresa = NULL){
+    function get_all($max = NULL, $inic = NULL, $ie = NULL, $cnpj = NULL, $id_empresa = NULL){
         $this->db->select('*');
         $this->db->from('empresas');
         
@@ -14,8 +14,8 @@ class Empresa_model extends CI_Model{
             $this->db->like('documento', $cnpj);
         if($id_empresa!=NULL)
             $this->db->where('id', $id_empresa);
-
-        $this->db->limit($max, $inic);
+        if($max!=NULL)
+            $this->db->limit($max, $inic);
         return $this->db->get()->result();
     }
     function count_all($ie = NULL, $cnpj = NULL){
@@ -42,6 +42,6 @@ class Empresa_model extends CI_Model{
     function Atualizar($empresa) {
                 
         $this->db->where('id', $empresa['id']);
-        return $this->db->update('empresas', $objeto);  
+        return $this->db->update('empresas', $empresa);  
     }
 }

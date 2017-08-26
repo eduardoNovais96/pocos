@@ -100,21 +100,19 @@ function editar_usuario(id) {
  * SCRIPTS Empresas
  */
 function editar_empresa(id) {
-    $.post(base_url + 'empresas/gerenciar_empresas/dados_empresa', {
+    $.post(base_url + 'empresas/gerenciar_empresas/dados_empresa/'+id, {
         id: id
     }, function (data) {
+        $('#codigo_edt').val(data.codigo);
         $('#nome_edt').val(data.nome);
-        $('#usuario_edt').val(data.ususario);
-        $('#id').val(data.id_usuario);
+        $('#im_edt').val(data.im);
+        $('#cnpj_edt').val(data.cnpj);
+        $('#endereco_edt').val(data.endereco);
+        $('#data_inscricaoval_edt').val(data.data_inscricao);
+        $('#id_empresa_edt').val(id);
         
-        $.each(data.td_nivel, function( index, value ) {
-            document.getElementById('nivel'+value).checked = false;
-        });
-        
-        $.each(data.nivel, function( index, value ) {
-            document.getElementById('nivel'+value).checked = true;
-        });
+        document.getElementById("tipo_edt"+data.tipo).checked = true;
         
     }, 'json');
-    $('#modal_editar_usuario').modal('show');
+    $('#modal_editar_empresa').modal('show');
 }

@@ -161,7 +161,7 @@
 
                     echo '<b>Inscrição Municipal:</b>';
                     $atributos = array(
-                        'name'  =>  'ie',
+                        'name'  =>  'im',
                         'class' =>  'form-control',
                         'type'  =>  'number'
                     );
@@ -214,7 +214,7 @@
         <div class="modal-content">
             <div class="modal-header corTextoModal">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
-                <h4 class="modal-title">Editar Usuário</h4>
+                <h4 class="modal-title">Editar Empresa</h4>
             </div>
             <div class="modal-body">
                 <form role="form" method="post" id="editarEmpresa" action="<?php echo base_url('empresas/gerenciar_empresas/salvar'); ?>" >
@@ -244,7 +244,7 @@
                         
                         $atributos = array(
                             'name' => 'tipo',
-                            'id' => 'tipo_edt',
+                            'id' => 'tipo_edtCOMERCIO',
                             'value' => 'COMERCIO',
                         );
                         echo '<td>'.form_radio($atributos).nbs().'COMERCIO</td></tr>';
@@ -252,7 +252,7 @@
                         echo '<tr><td></td>';
                         $atributos = array(
                             'name' => 'tipo',
-                            'id' => 'tipo_edt',
+                            'id' => 'tipo_edtSERVICO',
                             'value' => 'SERVICO',
                         );
                         echo '<td>'.form_radio($atributos).nbs().'SERVICO</td></tr>';
@@ -260,8 +260,8 @@
 
                     echo '<b>Inscrição Municipal:</b>';
                     $atributos = array(
-                        'name'  =>  'ie',
-                        'id'  =>  'ie_edt',
+                        'name'  =>  'im',
+                        'id'  =>  'im_edt',
                         'class' =>  'form-control',
                         'type'  =>  'number'
                     );
@@ -291,8 +291,7 @@
                     );
                     echo form_input($atributos).br();
               ?>
-                <input class="form-control" type="hidden" id="id" name="id">
-                <input class="form-control" type="hidden" id="gerenciar" name="gerenciar" value="1">
+                <input class="form-control" type="hidden" id="id_empresa_edt" name="id_empresa">
             </div>
             <div class="modal-footer">
                 <p align="left">
