@@ -93,8 +93,18 @@ function editar_usuario(id) {
             document.getElementById('nivel'+value).checked = true;
         });
         
+        document.getElementById("status"+data.status).checked = true;
+        
     }, 'json');
     $('#modal_editar_usuario').modal('show');
+}
+
+function gerar_nova_senha(){
+    $.post(base_url + 'usuarios/gerenciar_usuarios/gerar_senha', {
+    }, function (data) {
+        $('#nova_senha_usuario').val(data.senha);
+    }, 'json');
+    $('#modal_novo_sindicalizado').modal('show');
 }
 
 /*

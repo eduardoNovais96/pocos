@@ -5,7 +5,7 @@ class Usuario_model extends CI_Model{
         parent::__construct();
     }
     function logar($data){
-        $this->db->select('u.id_usuario, u.nome, u.usuario, un.id_nivel as cod_nivel, n.descricao as nivel');
+        $this->db->select('u.id_usuario, u.nome, u.usuario, un.id_nivel as cod_nivel, n.descricao as nivel, u.status');
         $this->db->from('usuarios u');
         $this->db->join('usuarios_nivel un','un.id_usuario = u.id_usuario','inner');
         $this->db->join('nivel n','un.id_nivel = n.id_nivel','inner');

@@ -5,9 +5,11 @@ class Gerenciar_usuarios extends CI_Controller {
         parent::__construct();
         $this->load->model('usuario_model','um');
     }
-    public function index($msg = NULL){
-            if(@$msg != NUll)
-                $data['mensagem'] = $msg;
+    public function index(){
+            if(@$this->session->userdata['msg'] != NUll){   
+                $data['mensagem'] = $this->session->userdata['msg'];
+                $this->session->set_userdata('msg', NULL);
+            }
             $sess['usuario'] = NULL;
             $sess['nome'] = NULL;
             $sess['qtd'] = 10;
@@ -197,6 +199,7 @@ class Gerenciar_usuarios extends CI_Controller {
         
         $this->form_validation->set_rules('nome','Nome','required');
         $this->form_validation->set_rules('email','E-Mail','required');
+        $this->form_validation->set_rules('status','Status','required');
         $this->form_validation->set_rules('usuario','Usuário','required');
         
         if(@$this->input->post('senha_antiga') || @$this->input->post('senha_antiga') || @$this->input->post('senha_antiga')){
@@ -225,6 +228,7 @@ class Gerenciar_usuarios extends CI_Controller {
 
                     $data['nome']            =   $this->input->post('nome');
                     $data['email']           =   $this->input->post('email');
+                    $data['status']           =   $this->input->post('status');
                     $data['usuario']         =   $this->input->post('usuario');
                     $data['senha']           =   md5($this->input->post('senha'));
 
@@ -265,6 +269,7 @@ class Gerenciar_usuarios extends CI_Controller {
 
                 $data['nome']            =   $this->input->post('nome');
                 $data['email']            =   $this->input->post('email');
+                $data['status']           =   $this->input->post('status');
                 $data['usuario']         =   $this->input->post('usuario');
 
                 $existente = $this->um->get_usuario_existente($data['usuario'], $id);
@@ -395,6 +400,7 @@ class Gerenciar_usuarios extends CI_Controller {
             $dados['email'] = $u->email;
             $dados['nome'] = $u->nome;
             $dados['ususario'] = $u->usuario;
+            $dados['status'] = $u->status;
 
             foreach($nivel as $n){
                 $dados['nivel'][$n->id_nivel] = $n->id_nivel;

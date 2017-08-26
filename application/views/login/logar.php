@@ -9,7 +9,9 @@
                 <section class="login_content">
                     <form>
                         <h1><img src="<?php echo base_url('assets/img/Logo.png');?>" width="40%"></h1>
-                        <?php echo validation_errors(); ?>
+                        <?php echo validation_errors(); 
+                        if(@$mensagem)
+                            echo $mensagem; ?>
                         <div>
                             <input type="text" class="form-control" placeholder="Usuário" required="" name="usuario" />
                         </div>
@@ -35,7 +37,7 @@
                             <br />
 
                             <div>
-                                <h1>Poços de Caldas 100% Conectado</h1>
+                                <!--<h1>Poços de Caldas 100% Conectado</h1>-->
                                 <!--<p>IF Sul de Minas Campus Muzambinho</p>-->
                             </div>
                         </div>

@@ -82,14 +82,20 @@
                     <td align="center"><b>Nome</b></td>
                     <td align="center" class="hidden-xs"><b>E-Mail</b></td>
                     <td align="center"><b>Usuário</b></td>
+                    <td align="center"><b>Status</b></td>
                     <td align="center"><b>Editar</b></td>
                 </tr>
             </thead>
             <?php
-            foreach (@$usuarios as $u){     
+            foreach (@$usuarios as $u){
+                if($u->status == 0)
+                    $status = '<div class="alert-block alert-danger fade in">Inativo</div>';
+                else 
+                    $status = '<div class="alert-block alert-success fade in">Ativo</div>';
                 echo '<tr><td align="center">'.$u->nome.'</td>';
                 echo '<td align="center" class="hidden-xs">'.$u->email.'</td>';
                 echo '<td align="center">'.$u->usuario.'</td>';
+                echo '<td align="center">'.$status.'</td>';
                 echo '<td align="center"><a class="btn btn-primary" href="javascript:func()" onclick="editar_usuario(' . $u->id_usuario . ')"><i class="glyphicon glyphicon-list"></i></a></td></tr>';
             }
             ?>    
@@ -180,13 +186,9 @@
                         'type'  =>  'password',
                         'value' =>  ''
                     );
-//                    echo '<div class="col-md-9 col-sm-12 col-xs-12">';
                     echo '<table width="100%" >';
                         echo '<tr><td width="80%">'.form_input($atributos).'</td>';
-//                    echo '</div>';
-//                    echo '<div class="col-md-3 col-sm-12 col-xs-6">';
                         echo '<td width="15%" align="right"><a href="javascript:;" class="btn btn-danger" onclick="gerar_nova_senha()">Gerar</a></td></tr>';
-//                    echo '</div>';
                     echo '</table>';
               ?>
             </div>
@@ -239,21 +241,39 @@
                     
                     $op = array();
 
-                    echo '<table>';
-                    echo '<tr><td width="40%"><b>Nível:</b></td>';
-                    $cont=0;
-                    foreach ($nivel as $n){
-                        if($cont>0)
-                            echo '<tr><td></td>';
+                    echo '<table width="30%">';
+                        echo '<tr><td width="40%"><b>Nível:</b></td>';
+                        $cont=0;
+                        foreach ($nivel as $n){
+                            if($cont>0)
+                                echo '<tr><td></td>';
+                            $atributos = array(
+                                'name' => 'nivel[]',
+                                'id' => 'nivel'.$n->id_nivel,
+                                'value' => $n->id_nivel,
+                            );
+                            echo '<td>'.form_checkbox($atributos).nbs().$n->descricao.'</td></tr>';
+                            $cont++;
+                        }
+                    echo '</table>'.br();
+                    echo '<table  width="30%">';
+                        echo '<tr><td width="40%"><b>Status:</b></td>';
                         $atributos = array(
-                            'name' => 'nivel[]',
-                            'id' => 'nivel'.$n->id_nivel,
-                            'value' => $n->id_nivel,
+                            'name' => 'status',
+                            'id' => 'status1',
+                            'value' => 1,
                         );
-                        echo '<td>'.form_checkbox($atributos).nbs().$n->descricao.'</td></tr>';
+                        echo '<td>'.form_radio($atributos).nbs().'Ativo</td></tr>';
+                        echo '<tr><td></td>';
+                        $atributos = array(
+                            'name' => 'status',
+                            'id' => 'status0',
+                            'value' => 0,
+                        );
+                        echo '<td>'.form_radio($atributos).nbs().'Inativo</td></tr>';
                         $cont++;
-                    }
                     echo '</table><br>';
+                    
                     echo '<b>Usuário:</b>';
                     $atributos = array(
                         'name'  =>  'usuario',
