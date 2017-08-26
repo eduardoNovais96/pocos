@@ -9,6 +9,7 @@
 
         <title>Poços</title>
         <?php
+        echo '<link rel="shortcut icon" href="'.base_url('assets/img/Logo.png').'">';
         //<!-- Bootstrap -->
         echo link_tag('assets/vendors/bootstrap/dist/css/bootstrap.min.css', 'stylesheet', 'text/css', 'screen');
         lnbreak();
@@ -37,8 +38,9 @@
                         <div class="left_col scroll-view">
                             <div class="navbar nav_title" style="border: 0;">
                                 <a href="<?php echo base_url(); ?>" class="site_title">
-                                    <div class="profile_pic"><img src="<?php echo base_url('assets/img/night.jpg');?>" width="100%"></div>
-                                    <span>Poços</span></a>
+                                    <div class="profile_pic"><img src="<?php echo base_url('assets/img/Logo.png');?>" width="100%"></div>
+                                    <!--<span>Conecta</span>-->
+                                </a>
                             </div>
 
                             <div class="clearfix"></div>
