@@ -1,3 +1,9 @@
+var ate            = 0;
+var de             = 0;
+var sucessoReceita = 0;
+var errosReceita   = 0;
+var informacoes    = [];
+
 //Mascaras de Entrada
 jQuery(function($){
     $(".data").mask("99/99/9999");
@@ -133,4 +139,90 @@ function editar_empresa(id) {
         
     }, 'json');
     $('#modal_editar_empresa').modal('show');
+}
+
+function exibirModalAtualizarComReceita() {
+    
+    $('#modalAtualizarEmpresasComReceita #mensagem').hide();
+    $('#modalAtualizarEmpresasComReceita').modal('show');
+}
+
+function atualizarComAReceitaAsEmpresas() {
+        
+    $('#modalAtualizarEmpresasComReceita #mensagem').html('CARREGANDO...');
+    
+    sucessoReceita = 0;
+    errosReceita   = 0;
+    informacoes    = [];
+    de             = Number($('#de').val());
+    ate            = Number($('#ate').val());
+
+    mostrarInformacoesBuscasReceita();
+    $('#modalAtualizarEmpresasComReceita #mensagem').show();
+    $('#atualizarEmpresas').attr('disabled', 'disabled');
+    buscarEAtualizarEmpresa();
+}
+
+function buscarEAtualizarEmpresa(){
+    
+    $.ajax({
+        url: $('#baseUrl').val() + 'empresas/gerenciar_empresas/buscarEAtualizarComReceita/' + de,
+        type: 'GET',
+        dataType: 'json',
+        success: function(dados) {
+            
+            if(dados.atualizada) {
+                
+                sucessoReceita++;
+                informacoes[informacoes.length] = "<span style='color: green;'>" + de + " - " + dados.empresa + ", ATUALIZADA</span>";
+            }
+            else {
+                
+                errosReceita++;
+                informacoes[informacoes.length] = "<span style='color: red;'>" + de + " - " + dados.empresa + ", NÃO ATUALIZADA</span>";
+            }
+            
+            mostrarInformacoesBuscasReceita();
+            
+            if(de < ate) {
+                
+                de++;                
+                buscarEAtualizarEmpresa();
+            }
+            else {
+                
+                $('#modalAtualizarEmpresasComReceita #mensagem').append('<br><br><span style="color: green;">OPERAÇÃO FINALIZADA</span><br><span> - Sucessos: ' + sucessoReceita + ' </span><span> - Erros: ' + errosReceita + '</span>');
+                $('#atualizarEmpresas').removeAttr('disabled');
+            }
+        },
+        error: function() {
+            
+            errosReceita++;
+            informacoes[informacoes.length] = "<span style='color:red;'>" + de + " - OCORREU UM ERRO</span>";
+            
+            if(de < ate) {
+             
+                de++;
+                mostrarInformacoesBuscasReceita();
+                buscarEAtualizarEmpresa();
+            }
+            else {
+                
+                $('#modalAtualizarEmpresasComReceita #mensagem').append('<br><br><span style="color: green;">OPERAÇÃO FINALIZADA</span><br><span> - Sucessos: ' + sucessoReceita + ' </span><span> - Erros: ' + errosReceita + '</span>');
+                $('#atualizarEmpresas').removeAttr('disabled');
+            }
+        }
+    });
+};
+
+function mostrarInformacoesBuscasReceita() {
+    
+    var informação = "Atualizando " + de + " de " + ate;
+    
+    for(var i=informacoes.length-1;i>informacoes.length-8 && i>=0;i--) {
+        
+        informação += "<br>" + informacoes[i];
+    }
+    
+    $('#modalAtualizarEmpresasComReceita #mensagem').html(informação);
 }
