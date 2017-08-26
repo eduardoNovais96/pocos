@@ -4,7 +4,7 @@ class Empresa_model extends CI_Model{
     function __construct() {
         parent::__construct();
     }
-    function get_all($max = NULL, $inic = NULL, $ie = NULL, $cnpj = NULL, $id_empresa = NULL, $tipo = NULL){
+    function get_all($max = NULL, $inic = NULL, $ie = NULL, $cnpj = NULL, $id_empresa = NULL, $tipo = NULL, $busca = NULL){
         $this->db->select('*');
         $this->db->from('empresas');
         
@@ -18,15 +18,29 @@ class Empresa_model extends CI_Model{
             $this->db->limit($max, $inic);
         if($tipo!=NULL)
             $this->db->where('tipo', $tipo);
+        if($busca != NULL) {
+            
+            $this->db->like('nome', $busca);
+            $this->db->or_like('inscricao_municipal', $busca);
+            $this->db->or_like('documento', $busca);
+            $this->db->or_like('endereco', $busca);
+        }
         return $this->db->get()->result();
     }
-    function count_all($ie = NULL, $cnpj = NULL, $tipo = NULL){
+    function count_all($ie = NULL, $cnpj = NULL, $tipo = NULL, $busca = NULL){
         if($ie!=NULL)
             $this->db->like('inscricao_municipal', $ie);
         if($cnpj!=NULL)
             $this->db->like('documento', $cnpj);
         if($tipo!=NULL)
             $this->db->where('tipo', $tipo);
+        if($busca != NULL) {
+            
+            $this->db->like('nome', $busca);
+            $this->db->or_like('inscricao_municipal', $busca);
+            $this->db->or_like('documento', $busca);
+            $this->db->or_like('endereco', $busca);
+        }
         return $this->db->count_all_results('empresas');
     }
     function set_empresa($dados){

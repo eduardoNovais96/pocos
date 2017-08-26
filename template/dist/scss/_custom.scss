@@ -1,0 +1,431 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13/08/2017, 20:59:33
+    Author     : abner
+*/
+@font-face {
+    font-family: ubuntu;
+    src: url(../../assets/fonts/Ubuntu-L.ttf);
+
+}
+
+@font-face {
+    font-family: concert;
+    src: url(../../assets/fonts/ConcertOne-Regular.ttf);
+
+}
+
+
+
+@font-face {
+    font-family: corbel;
+    src: url(../../assets/fonts/corbel.ttf);
+
+}
+
+@font-face {
+    font-family: ubuntu;
+    src: url(../../assets/fonts/Ubuntu-B.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: asap;
+    src: url(../../assets/fonts/AsapCondensed-Bold.ttf);
+}
+
+.cadastrobasico{
+    UL {list-style: none}
+    li{
+        padding-left: 20px;
+        padding-top:20px;
+        padding-bottom:20px;
+        font-style: asap;
+        font-weight: bold;
+    }
+}
+.colpagination{
+    border: 1px solid $smokyblack;
+    padding: 20px;
+}
+.paginaisso{
+    UL {
+    list-style: none;
+     width: 100%;
+    }
+    a{
+        text-decoration: none;
+    }
+    li{
+        width: 100%;
+        border: 1px solid;
+        padding-left: 20px;
+        padding-top:20px;
+        padding-bottom:20px;
+        font-style: asap;
+        font-weight: bold;
+    }
+}
+.titulo{
+    margin-top: 40px;
+    h1{
+        font-family: asap;
+        color: $red;
+    }
+}
+
+.carousel-item{
+    h4{
+        margin-top:30px;
+        font-family: asap;
+        font-size: 50px;
+    }
+    hr{
+        border: 2px solid $white;
+        width: 200px;
+    }
+    h3{
+        font-family: asap;
+        font-size: 72px;
+    }
+    h2{
+        font-family: asap;
+        font-size: 120px;
+    }
+    .red{
+        color: $red !important;
+    }
+    
+}
+
+.fakenav{
+    width: 100% !important;
+    height: 100px !important;
+}
+
+.fechamodal{
+    font-size:20px;
+    margin-top:40px;
+    margin-right:25px;
+}
+
+.fill {
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    width:100% !important;
+    height:100% !important;
+    border: none;
+    &:focus{
+         outline:none;
+    }
+
+}
+
+.placeholder{
+    font-weight: bold;
+    font-family: ubuntu;
+    font-size: 20px;
+}
+
+
+.navbar{
+		background-color: transparent !important;
+    font-family: ubuntu !important;
+    height: 100px !important;
+   // border-bottom: solid black 2px !important;
+    .navbar-brand{
+        font-color: $platium !important;
+    }
+}
+
+.navlinksA{
+    .textlogo{
+        margin-top:50px;
+        color: $white;
+        font-size:50px;
+        font-family: asap;
+    }
+	a{
+    	color: $white !important;
+    	font-weight:bold;
+    	text-decoration: none !important;
+   }
+   i{
+       color: $white !important;
+       font-size:30px;
+       margin-bottom: 10px;
+       margin-right: 30px;
+    }
+   .separador{
+        display:none;
+    }
+   a:hover{
+   		color: $red !important;
+   		font-weight:bold;
+    	text-decoration: none !important;
+   }
+    i:hover{
+       color: $red !important;
+       font-size:30px;
+        cursor: pointer;
+    }
+}
+
+.logo{
+	width: auto;
+	height: 80px;
+}
+
+.margintopsm{
+	margin-top: 20px !important; 	
+}
+
+.tab{
+	image{
+		border: 1px black solid;
+	}
+}
+
+.pctop{
+	height: 350px !important;
+	margin-top: 200px;
+	width:auto;
+	&:hover{
+		height: 400px !important;
+		margin-top: 200px;
+		width:auto;
+	}
+}
+
+
+.texto{
+    color: $smokyblack;
+	font-family: asap !important;
+	h1{
+		font-size: 40px;
+		margin-top:50px;
+	}
+	hr{
+        border: 2px solid $smokyblack;
+        width: 200px;
+	}
+    p{
+        font-size: 20px;
+        font-family: corbel;
+    }
+
+}
+
+.footer{
+	font-family: ubuntu !important;
+	margin-top:50px;
+	margin-bottom:20px;
+    height: 320px !important;
+	p{
+    	color: $white !important;
+    	font-weight: bold;
+  }
+  a{
+  		color: $tuftsblue !important;
+  }
+    .footeritem{
+        h1{
+         color: $smokyblack;
+        margin-top:10px;
+        font-family: asap;
+        }
+        a{
+            font-size: 20px;
+            color:black !important;
+            text-decoration: none;
+        }
+        hr{
+            border: 2px solid $white;
+            width: 120px;
+	    }
+        .logo{
+            height: 180px;
+            width: auto;
+            margin-top:10px;
+        }
+        p{
+            color:$white;
+            font-family: asap;
+            font-size: 60px;
+            
+        }
+    }
+}
+
+.bigsquare{
+	  p{
+    	margin-top:20px;
+    }
+    font-family: ubuntu !important;
+    font-size: 20px;
+    color: #fff;
+}
+
+.search{
+    .trans{
+        background-color: transparent !important;
+    }
+     .btn:focus,.btn:active {
+           outline: none !important;
+    }
+        button:focus {
+          outline: none !important;
+        }
+}
+
+.modal{
+    width: 100% !important;
+}
+.modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0;
+  max-width: 100% !important;
+}
+
+.modal-content {
+  height: auto;
+  min-height: 100%;
+  border-radius: 0;
+}
+
+.navlinksB{
+     .textlogo{
+        color:$smokyblack;
+        font-size:50px;
+        font-family: asap;
+    }
+	a{
+    	color: $smokyblack !important;
+    	font-weight:bold;
+    	text-decoration: none !important;
+        display: inline-block;
+   }
+   a:hover{
+   		color: $tuftsblue !important;
+   		font-weight:bold;
+    	text-decoration: none !important;
+   }
+    .separador{
+        font-weight:bold;
+        color: $smokyblack !important;
+    }
+    i{
+       color: $smokyblack !important;
+       font-size:30px;
+      margin-bottom: 10px;
+       margin-right: 30px;
+    }
+     i:hover{
+       color: $tuftsblue !important;
+       font-size:30px;
+    }
+}
+
+.carousel .item {
+    width: 100%; /*slider width*/
+    max-height: 600px; /*slider height*/
+}
+.carousel .item img {
+    width: 100%; /*img width*/
+}
+/*full width container*/
+@media (max-width: 767px) {
+    .block {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+}
+
+.carousel-caption {
+    top: 25%;
+    bottom: auto;
+}
+
+.gradient{
+
+   /* background-color: $red4;
+    background-image: -webkit-linear-gradient(-50deg, $red4 65%, $white 35%);
+    min-height: 500px;
+ */
+}
+
+.fixedTop {
+  top: 0;
+  margin: 0 !important;
+}
+
+.center-div{
+    margin-top:50%;
+    margin-bottom: 50%;
+}
+
+.grow {
+    height:auto;
+    width:auto;
+}
+
+.grow:hover {
+    height:auto;
+    width:70px;
+}
+
+
+.colgrid{
+    border: 3px solid $outerspace;
+    font-family: concert;
+    corlor: $smokyblack;
+    h1{
+        color: $red;
+        font-size: 100px;
+    }
+    h2{
+        font-size: 20px;
+         margin-top: 20px;
+    }
+    p{
+        font-family: corbel;
+        margin-top: 20px;
+    }
+    button{
+        padding-top: 0px;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    
+}
+
+
+
+.colborder{
+    border: 1px 1px 1px 1px black solid !important;
+}
+
+.square{
+    img{
+    	padding-top:25%;
+    }
+    a{
+    	 text-decoration: none !important;
+    }
+    p{
+    	margin-top:5px;
+    	color: $white !important;
+    }
+    font-family: ubuntu !important;
+    color: #fff;
+    height: 250px !important;
+    width: 100% !important;
+}
+

@@ -3,11 +3,13 @@
 class Inicial extends CI_Controller {
     
 	public function index(){
+            
             if(@$this->nativesession->get('id_usuario'))
                     redirect(base_url ('pagina_inicial'));
             else{
-                    $data['pagina'] = 'login/logar';
-                    $this->load->view('template',$data);
+                    //$data['pagina'] = 'login/logar';
+                    //$this->load->view('template',$data);
+                redirect('site/index');
             }
 	}
         public function erro_404(){
