@@ -4,7 +4,7 @@ class Empresa_model extends CI_Model{
     function __construct() {
         parent::__construct();
     }
-    function get_all($max, $inic, $ie = NULL, $cnpj = NULL){
+    function get_all($max, $inic, $ie = NULL, $cnpj = NULL, $id_empresa = NULL){
         $this->db->select('*');
         $this->db->from('empresas');
         
@@ -12,7 +12,9 @@ class Empresa_model extends CI_Model{
             $this->db->like('inscricao_municipal', $ie);
         if($cnpj!=NULL)
             $this->db->like('documento', $cnpj);
-//        $querry  = $this->db->get('usuario',$max,$inic);
+        if($id_empresa!=NULL)
+            $this->db->where('id', $id_empresa);
+
         $this->db->limit($max, $inic);
         return $this->db->get()->result();
     }
