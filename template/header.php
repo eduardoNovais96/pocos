@@ -7,7 +7,8 @@
         <meta name="author" content="">
         <link rel="icon" href="../../../../favicon.ico">
 
-        <title>OLIP - IFSULDEMINAS</title>
+        <title>SEARCH UP</title>
+        <link rel="shortcut icon" href="<?php echo base_url('assets/img/Logo.png'); ?>">
 
         <!-- Bootstrap core CSS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
@@ -31,7 +32,7 @@
                         <a class="nav-link" href="<?php echo base_url('site/busca/listar'); ?>">Empresas</a><span class="separador">|</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php // echo base_url('contato'); ?>"> Contato </a>  </a>
+                        <a class="nav-link" href="<?php echo base_url('contato'); ?>"> Contato </a>  </a>
                     </li>
                 </ul>
                 <ul id="search" class="navbar-nav navlinksA search">
