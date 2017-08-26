@@ -133,23 +133,23 @@ class Logar extends CI_Controller {
                             . ' de senha em nosso sistema, '
                             . 'clique no link abaixo para que voc&ecirc; possa gerar sua nova senha.<br><br>';
                     $msg .= 'Usu&aacute;rio: ' . $rec[0]->usuario . '<br>';
-                    $msg .= 'Link para gerar nova senha: ' . anchor(base_url('usuarios/gerenciar_usuarios/recuperar/' . $codigo));
+                    $msg .= 'Link para gerar nova senha: ' . anchor(base_url('usuarios/gerenciar_usuarios/recuperar/' . $codigo), 'Clique Aqui');
 
                     $config = Array(
                         'protocol' => 'smtp',
-                        'smtp_host' => 'ssl://smtp.googlemail.com',
+                        'smtp_host' => 'smtp.uni5.net',
                         'smtp_port ' => 465,
-                        'smtp_user' => 'poconecta@gmail.com',
-                        'smtp_pass' => 'poconecta123',
+                        'smtp_user' => 'poconecta@hotmail.com',
+                        'smtp_pass' => 'poconecta',
                         'mailtype' => 'html',
                         'charset' => 'iso-8859-1',
                         'newline' => '\r\n'
                     );
                     $this->load->library('email', $config);
-//                    $this->load->library('email');
+                    $this->load->library('email');
                     $this->email->set_newline('\r\n');
                     $this->email->initialize();
-                    $this->email->from('poconecta@gmail.com', 'Poços Conecta');
+                    $this->email->from('poconecta@hotmail.com', 'Pocos Conecta');
                     $this->email->to($rec[0]->email);
                     $this->email->subject('Link para gerar nova senha');
                     $this->email->message($msg);

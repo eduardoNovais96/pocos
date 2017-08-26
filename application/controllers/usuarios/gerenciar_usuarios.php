@@ -167,8 +167,9 @@ class Gerenciar_usuarios extends CI_Controller {
             $existente = $this->um->usuario_existente($data['usuario']);
             
             if(@$existente[0]->id_usuario){
-                $data['erro'] = '<div class="alert alert-block alert-danger fade in">Usuário já exsitente. </div>';
-                $this->index($data['erro']);
+                $mensagem = '<div class="alert alert-block alert-danger fade in">Usuário já exsitente. </div>';
+                $this->session->set_userdata('msg', $mensagem);
+                redirect(base_url('usuarios/gerenciar_usuarios'));
             }
             else{
                 $dados['id_usuario'] = $this->um->novo_usuario($data);
@@ -178,8 +179,9 @@ class Gerenciar_usuarios extends CI_Controller {
                     $this->um->novo_usuario_nivel($dados);
                 }
 
-                $data['mensagem'] = '<div class="alert alert-success">Usuário cadastrado com sucesso. </div>';
-                $this->index($data['mensagem']);
+                $mensagem = '<div class="alert alert-success">Usuário cadastrado com sucesso. </div>';
+                $this->session->set_userdata('msg', $mensagem);
+                redirect(base_url('usuarios/gerenciar_usuarios'));
             }
         }
         

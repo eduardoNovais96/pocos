@@ -79,11 +79,11 @@
         <table border="1" id="datatable-responsive" class = "table table-striped jambo_table bulk_action">
             <thead>
                 <tr class="headings">
-                    <td align="center"><b>Nome</b></td>
-                    <td align="center" class="hidden-xs"><b>E-Mail</b></td>
-                    <td align="center"><b>Usuário</b></td>
-                    <td align="center"><b>Status</b></td>
-                    <td align="center"><b>Editar</b></td>
+                    <td align="center" width="27%"><b>Nome</b></td>
+                    <td align="center" width="30%" class="hidden-xs"><b>E-Mail</b></td>
+                    <td align="center" width="20%"><b>Usuário</b></td>
+                    <td align="center" width="8%"><b>Status</b></td>
+                    <td align="center" width="5%"><b>Editar</b></td>
                 </tr>
             </thead>
             <?php
