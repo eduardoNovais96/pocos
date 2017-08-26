@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="<?php echo base_url('assets/img/Logo.png'); ?>" class="user-image img-responsive" width="100px" height="100px"/><br>
+    <img src="<?php echo base_url('assets/img/logo_grande.png'); ?>" class="user-image img-responsive" width="320" height="320"/><br>
 </p>
 
 <div align="center">

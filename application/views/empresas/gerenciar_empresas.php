@@ -108,7 +108,7 @@ echo form_input(array(
                 echo '<td align="center">'.$e->nome.'</td>';
                 echo '<td align="center" class="hidden-xs">'.$e->inscricao_municipal.'</td>';
                 echo '<td align="center">'.$e->documento.'</td>';
-                echo '<td align="center" class="hidden-xs">'.utf8_decode($e->endereco).'</td>';
+                echo '<td align="center" class="hidden-xs">'.  $e->endereco.'</td>';
                 echo '<td align="center" class="hidden-xs">'.$dt[2].'/'.$dt[1].'/'.$dt[0].'</td>';
                 echo '<td align="center"><a class="btn btn-primary" href="javascript:func()" onclick="editar_empresa(' . $e->id . ')"><i class="glyphicon glyphicon-list"></i></a></td></tr>';
             }

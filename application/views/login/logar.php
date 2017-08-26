@@ -8,7 +8,7 @@
             <div class="animate form login_form">
                 <section class="login_content">
                     <form>
-                        <h1><img src="<?php echo base_url('assets/img/Logo.png');?>" width="40%"></h1>
+                        <h1><img src="<?php echo base_url('assets/img/logo_grande.png');?>" width="60%"></h1>
                         <?php echo validation_errors(); 
                         if(@$mensagem)
                             echo $mensagem; ?>
