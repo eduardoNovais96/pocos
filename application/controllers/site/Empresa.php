@@ -38,6 +38,9 @@ class Empresa extends CI_Controller{
         $nome = str_replace('- ME', '', strtoupper($nome));
         $nome = str_replace('-MEI', '', strtoupper($nome));
         $nome = str_replace('-ME', '', strtoupper($nome));
+         $nome = str_replace(' - EPP', '', strtoupper($nome));
+         $nome = str_replace('- EPP', '', strtoupper($nome));
+         $nome = str_replace('-EPP', '', strtoupper($nome));
         $nome = preg_replace('/[0-9]+/', '', $nome); 
         $nome = str_replace(' ', ',', $nome);
         
