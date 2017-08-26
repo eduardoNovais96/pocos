@@ -242,7 +242,7 @@ class Gerenciar_empresas extends CI_Controller{
             $dados['nome'] = $e->nome;
             $dados['im'] = $e->inscricao_municipal;
             $dados['cnpj'] = $e->documento;
-            $dados['endereco'] = $e->endereco;
+            $dados['endereco'] = utf8_decode($e->endereco);
             $dados['data_inscricao']= $dt[2].'/'.$dt[1].'/'.$dt[0];
         }
         

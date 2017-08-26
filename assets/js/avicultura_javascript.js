@@ -119,7 +119,7 @@ function editar_empresa(id) {
         $('#im_edt').val(data.im);
         $('#cnpj_edt').val(data.cnpj);
         $('#endereco_edt').val(data.endereco);
-        $('#data_inscricaoval_edt').val(data.data_inscricao);
+        $('#data_inscricao_edt').val(data.data_inscricao);
         $('#id_empresa_edt').val(id);
         
         document.getElementById("tipo_edt"+data.tipo).checked = true;

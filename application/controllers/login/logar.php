@@ -136,20 +136,19 @@ class Logar extends CI_Controller {
                     $msg .= 'Link para gerar nova senha: ' . anchor(base_url('usuarios/gerenciar_usuarios/recuperar/' . $codigo), 'Clique Aqui');
 
                     $config = Array(
-                        'protocol' => 'smtp',
-                        'smtp_host' => 'smtp.uni5.net',
-                        'smtp_port ' => 465,
-                        'smtp_user' => 'poconecta@hotmail.com',
-                        'smtp_pass' => 'poconecta',
+//                        'protocol' => 'sendemail',
+//                        'smtp_host' => 'smtp.gmail.com',
+//                        'smtp_port ' => 465,
+//                        'smtp_user' => 'poconecta@gmail.com',
+//                        'smtp_pass' => 'poconecta',
                         'mailtype' => 'html',
                         'charset' => 'iso-8859-1',
                         'newline' => '\r\n'
                     );
                     $this->load->library('email', $config);
-                    $this->load->library('email');
                     $this->email->set_newline('\r\n');
                     $this->email->initialize();
-                    $this->email->from('poconecta@hotmail.com', 'Pocos Conecta');
+                    $this->email->from('poconecta@gmail.com', 'Pocos Conecta');
                     $this->email->to($rec[0]->email);
                     $this->email->subject('Link para gerar nova senha');
                     $this->email->message($msg);
