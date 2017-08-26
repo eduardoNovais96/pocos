@@ -25,7 +25,7 @@ class Gerenciar_empresas extends CI_Controller{
         else
             $maximo = 10;
 
-        $config['base_url'] = '/pocos/usuarios/gerenciar_empresas/filtro';
+        $config['base_url'] = '/pocos/empresas/gerenciar_empresas/filtro';
         $config['total_rows'] = $this->em->count_all();
         $config['per_page'] = $maximo;
         $config["uri_segment"] = 4;
@@ -63,30 +63,30 @@ class Gerenciar_empresas extends CI_Controller{
         $this->load->view('template',$data);
     }
     public function filtro(){
-        if(@$this->input->post('nome')){
-            $sess['nome'] = $this->input->post('nome');
-            $nome = $this->input->post('nome');
+        if(@$this->input->post('im')){
+            $sess['im'] = $this->input->post('im');
+            $im = $this->input->post('im');
         }
-        else if($this->session->userdata['nome']){
-            $sess['nome'] = $this->session->userdata['nome'];
-            $nome = $this->session->userdata['nome'];
+        else if(@$this->session->userdata['im']){
+            $sess['im'] = $this->session->userdata['im'];
+            $im = $this->session->userdata['im'];
         }
         else{
-            $sess['nome'] = NULL;
-            $nome = NULL;
+            $sess['im'] = NULL;
+            $im = NULL;
         }
 
-        if(@$this->input->post('usuario')){
-            $sess['usuario'] = $this->input->post('usuario');
-            $usuario = $this->input->post('usuario');
+        if(@$this->input->post('cnpj')){
+            $sess['cnpj'] = $this->input->post('cnpj');
+            $cnpj = $this->input->post('cnpj');
         }
-        else if($this->session->userdata['usuario']){
-            $sess['usuario'] = $this->session->userdata['usuario'];
-            $usuario = $this->session->userdata['usuario'];
+        else if($this->session->userdata['cnpj']){
+            $sess['cnpj'] = $this->session->userdata['cnpj'];
+            $cnpj = $this->session->userdata['cnpj'];
         }
         else{
-            $sess['usuario'] = NULL;
-            $usuario = NULL;
+            $sess['cnpj'] = NULL;
+            $cnpj = NULL;
         }        
 
         if(@$this->input->post('qtd')){
@@ -104,10 +104,10 @@ class Gerenciar_empresas extends CI_Controller{
 
         $this->session->set_userdata($sess);
 
-        $config['base_url'] = '/pocos/usuarios/gerenciar_usuarios/filtro';
-        $config['total_rows'] = $this->um->count_all($nome, $usuario);
+        $config['base_url'] = '/pocos/empresas/gerenciar_empresas/filtro';
+        $config['total_rows'] = $this->em->count_all($im, $cnpj);
         if($maximo == 'todos'){
-            $maximo = $this->um->count_all();
+            $maximo = $this->em->count_all();
             $inicio = 0;
         }
         else
@@ -141,11 +141,10 @@ class Gerenciar_empresas extends CI_Controller{
         $this->pagination->initialize($config);
 
         $data['paginacao'] = $this->pagination->create_links();
-        $data['usuarios'] = $this->um->get_all($maximo, $inicio, $nome, $usuario);
+        $data['empresas'] = $this->em->get_all($maximo, $inicio, $im, $cnpj);
         $data['total'] = $config['total_rows'];
-        $data['nivel'] = $this->um->get_nivel();
 
-        $data['pagina']   = 'usuarios/gerenciar_usuarios';
+        $data['pagina']   = 'empresas/gerenciar_empresas';
         $this->load->view('template',$data);
     }
     
@@ -163,13 +162,15 @@ class Gerenciar_empresas extends CI_Controller{
         if($this->form_validation->run()==false)
             $this->index();
         else{
+            $dt = explode('/', $this->input->post('data_inscricao'));
+            
             $dados['codigo'] = $this->input->post('codigo');
             $dados['tipo'] = $this->input->post('tipo');
             $dados['nome'] = $this->input->post('nome');
             $dados['inscricao_municipal'] = $this->input->post('ie');
             $dados['documento']= $this->input->post('cnpj');
             $dados['endereco']= $this->input->post('endereco');
-            $dados['datainscricao']= $this->input->post('data_inscricao');
+            $dados['datainscricao']= $dt[2].'-'.$dt[1].'-'.$dt[0];
             
             if($this->em->set_empresa($dados))
                 $mensagem = '<div class="alert alert-block alert-success fade in">Empresa inserida com sucesso.</div>';
@@ -179,6 +180,10 @@ class Gerenciar_empresas extends CI_Controller{
             $this->session->set_userdata('msg', $mensagem);
             redirect(base_url('empresas/gerenciar_empresas'));
         }
+    }
+    
+    public function dados_empresa($id){
+        $empresa = $this->um->get_all(NULL, NULL, NULL, NULL, $id);
         
     }
     

@@ -95,3 +95,26 @@ function editar_usuario(id) {
     }, 'json');
     $('#modal_editar_usuario').modal('show');
 }
+
+/*
+ * SCRIPTS Empresas
+ */
+function editar_empresa(id) {
+    $.post(base_url + 'empresas/gerenciar_empresas/dados_empresa', {
+        id: id
+    }, function (data) {
+        $('#nome_edt').val(data.nome);
+        $('#usuario_edt').val(data.ususario);
+        $('#id').val(data.id_usuario);
+        
+        $.each(data.td_nivel, function( index, value ) {
+            document.getElementById('nivel'+value).checked = false;
+        });
+        
+        $.each(data.nivel, function( index, value ) {
+            document.getElementById('nivel'+value).checked = true;
+        });
+        
+    }, 'json');
+    $('#modal_editar_usuario').modal('show');
+}
