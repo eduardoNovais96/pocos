@@ -186,8 +186,12 @@ class Gerenciar_empresas extends CI_Controller{
             $dados['endereco']= $this->input->post('endereco');
             $dados['datainscricao']= $dt[2].'-'.$dt[1].'-'.$dt[0];
             
-            if($this->em->set_empresa($dados))
+            $empresaId = $this->em->set_empresa($dados);
+            
+            if($empresaId) {
+                $this->buscarEAtualizarComReceita($empresaId);
                 $mensagem = '<div class="alert alert-block alert-success fade in">Empresa inserida com sucesso.</div>';
+            }                
             else
                 $mensagem = '<div class="alert alert-block alert-danger fade in">Algo inesperado aconteceu.</div>';
             
@@ -221,8 +225,10 @@ class Gerenciar_empresas extends CI_Controller{
             $dados['endereco']= $this->input->post('endereco');
             $dados['datainscricao']= $dt[2].'-'.$dt[1].'-'.$dt[0];
             
-            if($this->em->Atualizar($dados))
+            if($this->em->Atualizar($dados)){
+                $this->buscarEAtualizarComReceita($dados['id']);
                 $mensagem = '<div class="alert alert-block alert-success fade in">Empresa atualizada com sucesso.</div>';
+            }
             else
                 $mensagem = '<div class="alert alert-block alert-danger fade in">Algo inesperado aconteceu.</div>';
             
@@ -280,6 +286,7 @@ class Gerenciar_empresas extends CI_Controller{
         
         $empresa = $this->em->BuscarPorId($empresaId);
         $nome    = $empresa->nome;
+        echo '<pre>';
         
         if($empresa) {
             

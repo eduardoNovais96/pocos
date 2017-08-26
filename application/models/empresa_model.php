@@ -30,7 +30,8 @@ class Empresa_model extends CI_Model{
         return $this->db->count_all_results('empresas');
     }
     function set_empresa($dados){
-        return $this->db->insert('empresas',$dados);
+        $this->db->insert('empresas',$dados);
+        return $this->UltimoId();
     }
     
     public function BuscarPorId($id) {
@@ -47,5 +48,15 @@ class Empresa_model extends CI_Model{
                 
         $this->db->where('id', $empresa['id']);
         return $this->db->update('empresas', $empresa);  
+    }
+    
+    function UltimoId()
+    {   
+        
+        $this->db->from('empresas')->order_by('id', 'desc')->limit('1');
+        
+        $query = $this->db->get();
+        $linha = $query->row();
+        return $linha->id;
     }
 }
