@@ -189,6 +189,13 @@ echo form_input(array(
                         echo '<td>'.form_radio($atributos).nbs().'SERVICO</td></tr>';
                     echo '</table><br>';
 
+                    echo '<b>ID Facebook:</b>';
+                    $atributos = array(
+                        'name'  =>  'id_facebook',
+                        'class' =>  'form-control',
+                    );
+                    echo form_input($atributos).br();
+                    
                     echo '<b>Inscrição Municipal:</b>';
                     $atributos = array(
                         'name'  =>  'im',
@@ -288,6 +295,14 @@ echo form_input(array(
                         echo '<td>'.form_radio($atributos).nbs().'SERVICO</td></tr>';
                     echo '</table><br>';
 
+                    echo '<b>ID Facebook:</b>';
+                    $atributos = array(
+                        'name'  =>  'id_facebook',
+                        'id'  =>  'id_facebook_edt',
+                        'class' =>  'form-control',
+                    );
+                    echo form_input($atributos).br();
+                    
                     echo '<b>Inscrição Municipal:</b>';
                     $atributos = array(
                         'name'  =>  'im',
