@@ -3,41 +3,56 @@
         Filtrar Usuários
     </div>
     <div class="panel-body">
-        <?php
-            echo form_open('usuarios/gerenciar_usuarios/filtro');
-                echo '<table width="90%" align="center">';
-                    $nome = @$this->session->userdata['nome'];
-                    $usuario = @$this->session->userdata['usuario'];
-                    $atributos = array(
-                        'name'  =>  'nome',
-                        'id'    =>  'nome',
-                        'class' =>  'form-control',
-                        'value' =>  $nome
-                    );
-                    echo '<tr><td width="8%" align="right">'.form_label('Nome: ').nbs(2).'</td>';
-                    echo '<td width="36%">'.form_input($atributos).'</td>';
+        <?php echo form_open('usuarios/gerenciar_usuarios/filtro', array('class' => 'form-horizontal form-label-left'));?>
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <?php
+                        $nome = @$this->session->userdata['nome'];
+                        $usuario = @$this->session->userdata['usuario'];
+                        $atributos = array(
+                            'name'  =>  'nome',
+                            'id'    =>  'nome',
+                            'class' =>  'form-control col-xs-12',
+                            'value' =>  $nome
+                        );
+                        echo form_input($atributos);
+                        ?>
+                      </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="usuario">Usuário</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <?php
+                        $nome = @$this->session->userdata['nome'];
+                        $usuario = @$this->session->userdata['usuario'];
+                        $atributos = array(
+                            'name'  =>  'usuario',
+                            'id'    =>  'usuario',
+                            'class' =>  'form-control col-xs-12',
+                            'value' =>  $usuario
+                        );
+                        echo form_input($atributos);
+                        ?>
+                      </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-xs-12" style="text-align: center;">
+                    <?php
+                    echo anchor(base_url('usuarios/gerenciar_usuarios'), 'Limpar Filtro', 'class="btn btn-danger"').nbs(3);
                     
                     $atributos = array(
-                        'name'  =>  'usuario',
-                        'id'    =>  'usuario',
-                        'class' =>  'form-control',
-                        'value' =>  $usuario
+                        'name'  =>  'btnFiltrar',
+                        'class' =>  'btn btn-success',
+                        'value' =>  'Filtrar'
                     );
-                    echo '<td width="15%" align="right">'.form_label('Usuário: ').nbs(2).'</td>';
-                    echo '<td width="36%">'.form_input($atributos).'</td></tr>';
-                echo '</table>';
-                
-                $atributos = array(
-                    'name'  =>  'btnFiltrar',
-                    'class' =>  'btn btn-success',
-                    'value' =>  'Filtrar'
-                );
-                echo br().'<div align="center">';
-                    echo anchor(base_url('usuarios/gerenciar_usuarios'), 'Limpar Filtro', 'class="btn btn-danger"').nbs(3);
                     echo form_submit($atributos);
-                echo '</div>';
-            echo form_close();
-        ?>
+                    ?>
+                </div>
+            </div>
+        <?php echo form_close();?>
     </div>
 </div>
 

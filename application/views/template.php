@@ -314,9 +314,6 @@
         ?>
         <script type="text/javascript">
             window.base_url = <?php echo json_encode(base_url()); ?>;
-            jQuery(function($){
-                $(".cpf").mask("999.999.999-99"); 
-            });
         </script>
 <!--    <script type="text/javascript" src="http://localhost/avicultura/clickheat/js/clickheat.js"></script>
 <noscript><p><a href="http://www.dugwood.com/index.html">Heatmap plugin</a></p></noscript>
@@ -338,12 +335,7 @@ initClickHeat(); //
     <?php
     //<-- jQuery -->
     echo script_tag('assets/vendors/jquery/dist/jquery.min.js', 'text/javascript');
-    lnbreak(); ?>
-    <script type="text/javascript">
-            jQuery(function($){
-                $(".cpf").mask("999.999.999-99"); 
-            });
-        </script> <?php
+    lnbreak();
     //<!-- Bootstrap -->
     echo script_tag('assets/vendors/bootstrap/dist/js/bootstrap.min.js', 'text/javascript');
     lnbreak();
@@ -395,8 +387,6 @@ initClickHeat(); //
     echo script_tag('assets/js/custom.min.js', 'text/javascript');
     lnbreak();
     echo script_tag('assets/js/avicultura_javascript.js', 'text/javascript');
-    lnbreak();
-    echo script_tag('assets/js/jquery.min', 'text/javascript');
     lnbreak();
     echo script_tag('assets/js/jquery.maskedinput.min.js', 'text/javascript');
     lnbreak();
