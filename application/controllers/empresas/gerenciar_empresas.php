@@ -282,11 +282,10 @@ class Gerenciar_empresas extends CI_Controller{
         }
     }
     
-        public function buscarEAtualizarComReceita($empresaId) {
+    public function buscarEAtualizarComReceita($empresaId) {
         
         $empresa = $this->em->BuscarPorId($empresaId);
         $nome    = $empresa->nome;
-        echo '<pre>';
         
         if($empresa) {
             
