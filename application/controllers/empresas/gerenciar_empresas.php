@@ -56,11 +56,10 @@ class Gerenciar_empresas extends CI_Controller{
         $this->pagination->initialize($config);
 
         $data['paginacao'] = $this->pagination->create_links();
-        $data['usuarios'] = $this->em->get_all($maximo, $inicio);
+        $data['empresas'] = $this->em->get_all($maximo, $inicio);
         $data['total'] = $config['total_rows'];
-        $data['nivel'] = $this->um->get_nivel();
 
-        $data['pagina']   = 'usuarios/gerenciar_usuarios';
+        $data['pagina']   = 'empresas/gerenciar_empresas';
         $this->load->view('template',$data);
     }
     public function filtro(){
@@ -148,5 +147,38 @@ class Gerenciar_empresas extends CI_Controller{
 
         $data['pagina']   = 'usuarios/gerenciar_usuarios';
         $this->load->view('template',$data);
+    }
+    
+    public function nova_empresa(){
+        $this->form_validation->set_rules('nome', 'Nome', 'required');
+        $this->form_validation->set_rules('tipo', 'Tipo', 'required');
+        $this->form_validation->set_rules('nome', 'Nome', 'required');
+        $this->form_validation->set_rules('ie', 'Inscrição Estadual', 'required');
+        $this->form_validation->set_rules('cnpj', 'CNPJ', 'required');
+        $this->form_validation->set_rules('endereco', 'Endereço', 'required');
+        $this->form_validation->set_rules('data_inscricao', 'Data de Inscrição', 'required');
+        
+        $this->form_validation->set_error_delimiters('<div class="alert alert-block alert-danger fade in">','</div>');
+        
+        if($this->form_validation->run()==false)
+            $this->index();
+        else{
+            $dados['codigo'] = $this->input->post('codigo');
+            $dados['tipo'] = $this->input->post('tipo');
+            $dados['nome'] = $this->input->post('nome');
+            $dados['inscricao_municipal'] = $this->input->post('ie');
+            $dados['documento']= $this->input->post('cnpj');
+            $dados['endereco']= $this->input->post('endereco');
+            $dados['datainscricao']= $this->input->post('data_inscricao');
+            
+            if($this->em->set_empresa($dados))
+                $mensagem = '<div class="alert alert-block alert-success fade in">Empresa inserida com sucesso.</div>';
+            else
+                $mensagem = '<div class="alert alert-block alert-danger fade in">Algo inesperado aconteceu.</div>';
+            
+            $this->session->set_userdata('msg', $mensagem);
+            redirect(base_url('empresas/gerenciar_empresas'));
+        }
+        
     }
 }

@@ -10,8 +10,8 @@ class Empresa_model extends CI_Model{
         
         if($ie!=NULL)
             $this->db->like('inscricao_municipal', $ie);
-        if($usuario!=NULL)
-            $this->db->like('usuario', $usuario);
+        if($cnpj!=NULL)
+            $this->db->like('documento', $cnpj);
 //        $querry  = $this->db->get('usuario',$max,$inic);
         $this->db->limit($max, $inic);
         return $this->db->get()->result();
@@ -22,5 +22,8 @@ class Empresa_model extends CI_Model{
         if($cnpj!=NULL)
             $this->db->like('documento', $cnpj);
         return $this->db->count_all_results('empresas');
+    }
+    function set_empresa($dados){
+        return $this->db->insert('empresas',$dados);
     }
 }
