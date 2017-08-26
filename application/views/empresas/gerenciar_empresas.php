@@ -1,3 +1,11 @@
+<?php
+echo form_input(array(
+    'name'  => 'baseUrl', 
+    'id'    => 'baseUrl', 
+    'value' => base_url(), 
+    'type'  => 'hidden'
+));
+?>
 <br><br><br><div class="panel panel-default">
     <div class="panel-heading">
         Filtrar Empresas
@@ -78,7 +86,8 @@
         if(@$mensagem)
             echo $mensagem;
         echo validation_errors(); ?>
-        <a href="javascript:;" class="btn btn-primary" onclick="novo_modal()">Nova Empresa</a><br><br>
+        <a href="javascript:;" class="btn btn-primary" onclick="novo_modal()">Nova Empresa</a>
+        <a href="javascript:;" class="btn btn-info" onclick="exibirModalAtualizarComReceita()">Atualizar empresas com a receita</a><br><br>
         <table border="1" id="datatable-responsive" class = "table table-striped jambo_table bulk_action">
             <thead>
                 <tr class="headings">
@@ -327,6 +336,23 @@
                     echo form_submit($atributos);
                     ?>
                 </p>
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade bs-example-modal-lg " id="modalAtualizarEmpresasComReceita" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header corTextoModal">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                <h4 class="modal-title">Atualizando empresas com a receita</h4>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <label>De</label><input type="text" id="de">
+                <label>Ate</label><input type="text" id="ate">
+                <button id="atualizarEmpresas" type="button" onclick="atualizarComAReceitaAsEmpresas()">Atualizar empresas no intervalo</button>
+                <div id="mensagem" style="margin-top: 25px;margin-bottom: 25px;"></div>
             </div>
             </form>
         </div><!-- /.modal-content -->

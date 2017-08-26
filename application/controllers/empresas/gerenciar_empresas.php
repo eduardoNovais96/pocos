@@ -275,4 +275,80 @@ class Gerenciar_empresas extends CI_Controller{
             echo json_encode(array('acabou' => '1'));
         }
     }
+    
+        public function buscarEAtualizarComReceita($empresaId) {
+        
+        $empresa = $this->em->BuscarPorId($empresaId);
+        $nome    = $empresa->nome;
+        
+        if($empresa) {
+            
+            $receita = json_decode($this->BuscarNaReceita(preg_replace("/[^0-9]/", "", $empresa->documento)));
+            
+            if(isset($receita->nome)) {
+                
+                $empresa = array(
+                    'id'                      => $empresaId,
+                    'receita_data_situacao'   => (isset($receita->data_situacao))   ? $receita->data_situacao : '',
+                    'receita_motivo_situacao' => (isset($receita->motivo_situacao)) ? $receita->motivo_situacao : '',
+                    'receita_telefone'        => (isset($receita->telefone))        ? $receita->telefone : '',
+                    'receita_email'           => (isset($receita->email))           ? $receita->email : '',
+                    'receita_situacao'        => (isset($receita->situacao))        ? $receita->situacao : '',
+                    'receita_tipo'            => (isset($receita->tipo))            ? $receita->tipo : '',
+                    'receita_capital_social'  => (isset($receita->capital_social))  ? $receita->capital_social : ''
+                );
+
+                $this->em->Atualizar($empresa);
+
+                echo json_encode(array('atualizada' => true, 'empresa' => $nome));
+            }
+            else {
+                
+                echo json_encode(array('atualizada' => false, 'empresa' => $nome));
+            }
+        }
+        else {
+            
+            echo json_encode(array('atualizada' => false, 'empresa' => $nome));
+        }
+    }
+    
+    public function TotalEmpresas() {
+        
+        echo json_encode(array(
+            'total' => $this->em->TotalRegistros()
+        ));
+    }
+    
+    public function BuscarNaReceita($cnpj, $post = NULL, array $header = array()){
+        
+        //Inicia o cURL
+        $ch = curl_init("https://www.receitaws.com.br/v1/cnpj/" . $cnpj);
+
+        //Pede o que retorne o resultado como string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        //Envia cabeçalhos (Caso tenha)
+        if(count($header) > 0) {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        }
+
+        //Envia post (Caso tenha)
+        if($post !== null) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+        }
+
+        //Ignora certificado SSL
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        //Manda executar a requisição
+        $data = curl_exec($ch);
+
+        //Fecha a conexão para economizar recursos do servidor
+        curl_close($ch);
+
+        //Retorna o resultado da requisição
+
+        return $data;
+    }
 }
