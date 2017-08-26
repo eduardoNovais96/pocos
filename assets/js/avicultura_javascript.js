@@ -111,6 +111,13 @@ function gerar_nova_senha(){
  * SCRIPTS Empresas
  */
 function editar_empresa(id) {
+    $('#codigo_edt').val(null);
+    $('#nome_edt').val(null);
+    $('#im_edt').val(null);
+    $('#cnpj_edt').val(null);
+    $('#endereco_edt').val(null);
+    $('#data_inscricao_edt').val(null);
+    $('#id_empresa_edt').val(null);
     $.post(base_url + 'empresas/gerenciar_empresas/dados_empresa/'+id, {
         id: id
     }, function (data) {

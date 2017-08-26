@@ -233,7 +233,7 @@ class Gerenciar_empresas extends CI_Controller{
     
     public function dados_empresa($id){
         $empresa = $this->em->get_all(NULL, NULL, NULL, NULL, $id);
-
+//print_r($empresa);die;
         foreach($empresa as $e){
             $dt = explode('-', $e->datainscricao);
             
@@ -242,7 +242,7 @@ class Gerenciar_empresas extends CI_Controller{
             $dados['nome'] = $e->nome;
             $dados['im'] = $e->inscricao_municipal;
             $dados['cnpj'] = $e->documento;
-            $dados['endereco'] = utf8_decode($e->endereco);
+            $dados['endereco'] = $e->endereco;
             $dados['data_inscricao']= $dt[2].'/'.$dt[1].'/'.$dt[0];
         }
         
