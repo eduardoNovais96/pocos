@@ -28,7 +28,7 @@
                     <li  class="nav-item">
                         <a class="nav-link" href="<?php echo base_url('site'); ?>"> Home </a><span class="separador">|</span>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('site/busca'); ?>">Empresas</a><span class="separador">|</span>
+                        <a class="nav-link" href="<?php echo base_url('site/busca/listar'); ?>">Empresas</a><span class="separador">|</span>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url('contato'); ?>"> Contato </a>  </a>

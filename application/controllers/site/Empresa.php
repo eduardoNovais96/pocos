@@ -46,4 +46,10 @@ class Empresa extends CI_Controller{
         
         return $nome;
     }
+    
+    public function palavrasMaisUtilizadas() {
+        
+        echo '<pre>';
+        print_r($this->input->post());
+    }
 }

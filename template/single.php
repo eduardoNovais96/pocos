@@ -184,7 +184,7 @@
                                     </div>
                                     </div>
                                     <script>
-                                        token = 'EAACEdEose0cBAL6LKhci83eRNxZBdq96xY1eyZA03RYwUcdk8LljFDOrOSjxATs2TxJ3c0TDdVvXxyusrRUlQy65M6eAjAWLL1PCjwXCGPDeuHEAD45eSGQ0amgZCIxSwz3Tkr7DBEZACtKFTq5Wo2sbZCXd4ciKTKQIf8r58W5QiNfxHEl46Nk1rT5RD9mGYawMXOo5PiwZDZD';
+                                        token = 'EAACEdEose0cBAJGgEZC5DmozcdWDYrFTcd2lZC8ZBJbK4jiCDNEYpk5ZA3JG1IwBKarel62tK0Qi9loWlN9PNf1cPcHTyh6OeXOv8nbyzOMEPg6BF1sGS4l2Tm9N9esfEW4GUIvdZBZABrUGa42GnCW8eWrtYyjKSmzupxjKlgZCRy250iQLcZBe7DUIZAIMyYuI6nJlwOdvMHQZDZD';
                                         console.log(document.getElementById('nome').value);
                                         axios.get('https://graph.facebook.com/search', {
                                             params: {
@@ -220,12 +220,14 @@
                                         function info(id) {
                                             axios.get('https://graph.facebook.com/' + id, {
                                                 params: {
-                                                    fields: 'overall_star_rating,name,bio,about,emails,website,phone,picture.type(large)',
+                                                    fields: 'overall_star_rating,name,bio,about,emails,website,phone,picture.type(large),posts',
                                                     access_token: token
                                                 }
                                             }).then(function (response) {
                                                 ///console.log(response);
-                                                console.log(response);
+                                                
+                                                buscarPalavrasMaisUsadas(response.data.posts.data);
+                                                
                                                 if (response.data.about) {
                                                     $('#about').append(response.data.about);
                                                 }
@@ -249,16 +251,13 @@
                                                     $('#estrela').append('<i class="fa fa-star yellow"></i> ');
                                                 }
                                                 for (; i < 5; i++) {
-                                                    console.log("absurdo");
+                                                    
                                                     $('#estrela').append('<i class="fa fa-star-o yellow"></i> ');
                                                 }
 
                                                 //glyphicon glyphicon-star
                                                 $('#imagem').attr('src', response.data.picture.data.url);
-                                                console.log(response.data.about);
-                                                console.log(response.data.name);
-                                                console.log(response.data.email);
-                                                console.log(response.data.website);
+                                                
                                                 // document.getElementById("foto").innerHTML = '<img src="' + response.data.picture.data.url + '">'
 
                                                 //for
@@ -289,6 +288,24 @@
                                         $('.btn-receita').removeClass('active');
                                         ele.addClass('active');
                                         document.getElementById('inform').innerHTML = '<p>'+document.getElementById('situacao').value+'</p>'+'<p><i class="fa fa-calendar" aria-hidden="true"></i> '+document.getElementById('datas').value+'</p>'+'<p>'+document.getElementById('motivo').value+'</p>';
+                                      }
+                                      
+                                      function buscarPalavrasMaisUsadas(posts) {
+                                            
+                                            var textoComPosts = '';
+                                            posts.forEach(function(post){
+                                                
+                                                if(post.message)
+                                                    textoComPosts += post.message.toLowerCase();
+                                            });
+                                          
+                                            var wordCounts = [];
+                                            var words = textoComPosts.split(/\b/);
+
+                                            for(var i = 0; i < words.length; i++)
+                                                wordCounts[words[i]] = (wordCounts[words[i]] || 0) + 1;
+                                            
+                                            console.log(wordCounts);
                                       }
                                     </script>
                                     

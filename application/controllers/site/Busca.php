@@ -11,6 +11,13 @@ class Busca extends CI_Controller{
         $this->load->model('empresa_model');
     }
     
+    public function listar() {
+        
+        $this->session->set_userdata('busca', '');
+        
+        $this->index();
+    }
+    
     public function index($de=0){
         
         if($this->input->post('busca')) {

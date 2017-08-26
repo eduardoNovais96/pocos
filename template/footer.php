@@ -1,13 +1,13 @@
 
 <div class="container-fluid">
-    <div class="row " stye="margin:0" align="center">
+    <div class="row " style="margin-top:50px" align="center">
         <div class="col bg-outerspaceT text-center footeritem" style="border">
-            <img class="logo" src="<?php echo base_url('template/assets/img/logo.svg'); ?>" > <p class="textlogo"> SEARCH UP </p> 
+            <img style="height:300px;width:auto;margin-top:30px" class="logo" src="<?php echo base_url('template/assets/img/logo.svg'); ?>" > <p class="asap"> SEARCH UP </p> 
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 bg-dark" style="background: #000000;">
-            <p><font color="white">Todos os direitos reservados. Um Desenvolvimento O XOR É LIVRE.</font></p>
+            <p><font color="white">Um Desenvolvimento O XOR É LIVRE.</font></p>
         </div>   
     </div>
 </div>
