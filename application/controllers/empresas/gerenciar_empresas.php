@@ -135,10 +135,10 @@ class Gerenciar_empresas extends CI_Controller{
 
         $config['full_tag_open'] = '<div class="dataTables_paginate paging_simple_numbers"><ul class="pagination">';
         $config['full_tag_close'] = '</ul></div><!--pagination-->';
-        $config['first_link'] = '&laquo; First';
+        $config['first_link'] = '&laquo; Primeiro';
         $config['first_tag_open'] = '<li class="prev page">';
         $config['first_tag_close'] = '</li>';
-        $config['last_link'] = 'Last &raquo;';
+        $config['last_link'] = 'Último &raquo;';
         $config['last_tag_open'] = '<li class="next page">';
         $config['last_tag_close'] = '</li>';
         $config['next_link'] = 'Próximo &rarr;';
@@ -166,6 +166,7 @@ class Gerenciar_empresas extends CI_Controller{
         $this->form_validation->set_rules('nome', 'Nome', 'required');
         $this->form_validation->set_rules('tipo', 'Tipo', 'required');
         $this->form_validation->set_rules('nome', 'Nome', 'required');
+        $this->form_validation->set_rules('id_facebook', 'ID Facebook', 'required');
         $this->form_validation->set_rules('im', 'Inscrição Estadual', 'required');
         $this->form_validation->set_rules('cnpj', 'CNPJ', 'required');
         $this->form_validation->set_rules('endereco', 'Endereço', 'required');
@@ -181,6 +182,7 @@ class Gerenciar_empresas extends CI_Controller{
             $dados['codigo'] = $this->input->post('codigo');
             $dados['tipo'] = $this->input->post('tipo');
             $dados['nome'] = $this->input->post('nome');
+            $dados['id_facebook'] = $this->input->post('id_facebook');
             $dados['inscricao_municipal'] = $this->input->post('im');
             $dados['documento']= $this->input->post('cnpj');
             $dados['endereco']= $this->input->post('endereco');
@@ -204,6 +206,7 @@ class Gerenciar_empresas extends CI_Controller{
         $this->form_validation->set_rules('nome', 'Nome', 'required');
         $this->form_validation->set_rules('tipo', 'Tipo', 'required');
         $this->form_validation->set_rules('nome', 'Nome', 'required');
+        $this->form_validation->set_rules('id_facebook', 'ID Facebook', 'required');
         $this->form_validation->set_rules('im', 'Inscrição Estadual', 'required');
         $this->form_validation->set_rules('cnpj', 'CNPJ', 'required');
         $this->form_validation->set_rules('endereco', 'Endereço', 'required');
@@ -220,6 +223,7 @@ class Gerenciar_empresas extends CI_Controller{
             $dados['codigo'] = $this->input->post('codigo');
             $dados['tipo'] = $this->input->post('tipo');
             $dados['nome'] = $this->input->post('nome');
+            $dados['id_facebook'] = $this->input->post('id_facebook');
             $dados['inscricao_municipal'] = $this->input->post('im');
             $dados['documento']= $this->input->post('cnpj');
             $dados['endereco']= $this->input->post('endereco');
@@ -246,6 +250,7 @@ class Gerenciar_empresas extends CI_Controller{
             $dados['codigo'] = $e->codigo;
             $dados['tipo'] = $e->tipo;
             $dados['nome'] = $e->nome;
+            $dados['id_facebook'] = $e->id_facebook;
             $dados['im'] = $e->inscricao_municipal;
             $dados['cnpj'] = $e->documento;
             $dados['endereco'] = $e->endereco;

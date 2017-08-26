@@ -39,23 +39,23 @@ class Busca extends CI_Controller{
         $config['next_link'] = 'Próximo';
         $config['prev_link'] = 'Anterior';
 
-        $config['full_tag_open'] = '<div class="dataTables_paginate paging_simple_numbers"><ul class="pagination">';
-        $config['full_tag_close'] = '</ul></div><!--pagination-->';
+        $config['full_tag_open'] = '<nav aria-label="Page navigation example"><ul class="pagination justify-content-center">';
+        $config['full_tag_close'] = '</ul></nav>';
         $config['first_link'] = '&laquo; Primeiro';
-        $config['first_tag_open'] = '<li class="prev page">';
+        $config['first_tag_open'] = '<li class="page-item navegacao navegacao">';
         $config['first_tag_close'] = '</li>';
         $config['last_link'] = 'Último &raquo;';
-        $config['last_tag_open'] = '<li class="next page">';
+        $config['last_tag_open'] = '<li class="page-item navegacao">';
         $config['last_tag_close'] = '</li>';
         $config['next_link'] = 'Próximo &rarr;';
-        $config['next_tag_open'] = '<li class="next page">';
+        $config['next_tag_open'] = '<li class="page-item navegacao">';
         $config['next_tag_close'] = '</li>';
         $config['prev_link'] = '&larr; Anterior';
-        $config['prev_tag_open'] = '<li class="prev page">';
+        $config['prev_tag_open'] = '<li class="page-item navegacao">';
         $config['prev_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="">';
+        $config['cur_tag_open'] = '<li class="page-item active"><a href="">';
         $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li class="page">';
+        $config['num_tag_open'] = '<li class="page-item">';
         $config['num_tag_close'] = '</li>';
 
         $this->pagination->initialize($config);

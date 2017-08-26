@@ -49,9 +49,9 @@
 $active_group = 'development';
 $active_record = TRUE;
 
-$db['development']['hostname'] = 'localhost';
-$db['development']['username'] = 'root';
-$db['development']['password'] = '';
+$db['development']['hostname'] = '192.168.203.220';
+$db['development']['username'] = 'usuario';
+$db['development']['password'] = '123';
 $db['development']['database'] = 'hackathon';
 $db['development']['dbdriver'] = 'mysql';
 $db['development']['dbprefix'] = '';
