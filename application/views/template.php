@@ -37,7 +37,7 @@
                     <div class="col-md-3 left_col">
                         <div class="left_col scroll-view">
                             <div class="navbar nav_title" style="border: 0;">
-                                <a href="<?php echo base_url(); ?>" class="site_title">
+                                <a href="<?php echo base_url('pagina_inicial'); ?>" class="site_title">
                                     <div class="profile_pic"><img src="<?php echo base_url('assets/img/Logo.png');?>" width="50" height="50"></div>
                                     <span>SEARCH UP</span>
                                 </a>
