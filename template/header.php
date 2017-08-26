@@ -31,7 +31,7 @@
                         <a class="nav-link" href="<?php echo base_url('site/busca'); ?>">Empresas</a><span class="separador">|</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php // echo base_url('contato'); ?>"> Contato </a>  </a>
+                        <a class="nav-link" href="<?php echo base_url('contato'); ?>"> Contato </a>  </a>
                     </li>
                 </ul>
                 <ul id="search" class="navbar-nav navlinksA search">

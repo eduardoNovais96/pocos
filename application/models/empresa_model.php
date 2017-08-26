@@ -73,4 +73,14 @@ class Empresa_model extends CI_Model{
         $linha = $query->row();
         return $linha->id;
     }
+    
+    function get_categorias($id_categoria = NULL){
+        $this->db->select('*');
+        $this->db->from('categorias');
+        
+        if($id_categoria != NULL)
+            $this->db->where('id_categoria', $id_categoria);
+        
+        return $this->db->get()->result();
+    }
 }
