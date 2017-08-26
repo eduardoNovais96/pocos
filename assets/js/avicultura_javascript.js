@@ -81,6 +81,7 @@ function editar_usuario(id) {
         id: id
     }, function (data) {
         $('#nome_edt').val(data.nome);
+        $('#email_edt').val(data.email);
         $('#usuario_edt').val(data.ususario);
         $('#id').val(data.id_usuario);
         

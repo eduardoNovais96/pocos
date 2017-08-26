@@ -129,19 +129,19 @@ class Logar extends CI_Controller {
 
                     $config = Array(
                         'protocol' => 'smtp',
-                        'smtp_host' => 'smtp-relay.gmail.com',
+                        'smtp_host' => 'ssl://smtp.gmail.com',
                         'smtp_port ' => 465,
-                        'smtp_user' => '',
-                        'smtp_pass' => '',
+                        'smtp_user' => 'poconecta@gmail.com',
+                        'smtp_pass' => 'poconecta123',
                         'mailtype' => 'html',
                         'charset' => 'iso-8859-1',
                         'newline' => '\r\n'
                     );
                     $this->load->library('email', $config);
-                    $this->load->library('email');
+//                    $this->load->library('email');
                     $this->email->set_newline('\r\n');
                     $this->email->initialize();
-                    $this->email->from('sinasefemuz@sinasefemuz.org.br', 'SINSAEFE');
+                    $this->email->from('poconecta@gmail.com', 'Poços Conecta');
                     $this->email->to($rec[0]->email);
                     $this->email->subject('Link para gerar nova senha');
                     $this->email->message($msg);

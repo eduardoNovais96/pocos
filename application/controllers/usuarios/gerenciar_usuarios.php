@@ -148,6 +148,7 @@ class Gerenciar_usuarios extends CI_Controller {
     }
     public function adcionar_usuario(){
         $this->form_validation->set_rules('nome','Nome','required');
+        $this->form_validation->set_rules('email','E-Mail','required');
         $this->form_validation->set_rules('usuario','Usuário','required');
         $this->form_validation->set_rules('senha','Senha','required');
         $this->form_validation->set_error_delimiters('<div class="alert alert-block alert-danger fade in">','</div>');
@@ -157,6 +158,7 @@ class Gerenciar_usuarios extends CI_Controller {
         }
         else{
             $data['nome']            =   $this->input->post('nome');
+            $data['email']           =   $this->input->post('email');
             $data['usuario']         =   $this->input->post('usuario');
             $data['senha']           =   md5($this->input->post('senha'));
             
@@ -194,7 +196,9 @@ class Gerenciar_usuarios extends CI_Controller {
         $id = $this->input->post('id');
         
         $this->form_validation->set_rules('nome','Nome','required');
+        $this->form_validation->set_rules('email','E-Mail','required');
         $this->form_validation->set_rules('usuario','Usuário','required');
+        
         if(@$this->input->post('senha_antiga') || @$this->input->post('senha_antiga') || @$this->input->post('senha_antiga')){
             $this->form_validation->set_rules('senha_antiga','Senha Antiga','required');
             $this->form_validation->set_rules('senha','Nova Senha','required');
@@ -220,8 +224,10 @@ class Gerenciar_usuarios extends CI_Controller {
                     $dt = explode('/', $this->input->post('nasc'));
 
                     $data['nome']            =   $this->input->post('nome');
+                    $data['email']           =   $this->input->post('email');
                     $data['usuario']         =   $this->input->post('usuario');
                     $data['senha']           =   md5($this->input->post('senha'));
+
                     $nova_senha = md5($this->input->post('senha_repeticao'));
 
                     if($data['senha'] == $nova_senha){
@@ -229,36 +235,44 @@ class Gerenciar_usuarios extends CI_Controller {
 
                         if(@$existente[0]->id_usuario){
                             $mensagem = '<div class="alert alert-block alert-danger fade in">Novo nome de usuário já existente.</div>'; ;
-                            $this->editar($mensagem);
+                            $this->session->set_userdata('msg', $mensagem);
+                            redirect(base_url('usuarios/gerenciar_usuarios/editar'));
+                            $this->session->set_userdata('msg', $mensagem);
+                            redirect(base_url('usuarios/gerenciar_usuarios/editar'));
                         }
                         else{
                             $this->um->editar_usuario($data, $id);
                             $mensagem = '<div class="alert alert-block alert-success fade in">Conta editada com sucesso.</div>'; ;
-                            $this->editar($mensagem);
+                            $this->session->set_userdata('msg', $mensagem);
+                            redirect(base_url('usuarios/gerenciar_usuarios/editar'));
                         }
                     }
                     else{
                         $mensagem = '<div class="alert alert-block alert-danger fade in">Os campos Nova Senha e Repetir '
                                 . 'Nova Senha estão diferentes.</div>'; ;
-                        $this->editar($mensagem);
+                        $this->session->set_userdata('msg', $mensagem);
+                            redirect(base_url('usuarios/gerenciar_usuarios/editar'));
                     }
                 }
                 else{
                     $mensagem = '<div class="alert alert-block alert-danger fade in">O campo Senha Antiga não confere.</div>'; ;
-                    $this->editar($mensagem);
+                    $this->session->set_userdata('msg', $mensagem);
+                    redirect(base_url('usuarios/gerenciar_usuarios/editar'));
                 }
             }
             else{
                 //$dt = explode('/', $this->input->post('nasc'));
 
                 $data['nome']            =   $this->input->post('nome');
+                $data['email']            =   $this->input->post('email');
                 $data['usuario']         =   $this->input->post('usuario');
 
                 $existente = $this->um->get_usuario_existente($data['usuario'], $id);
 
                 if(@$existente[0]->id_usuario){
                     $mensagem = '<div class="alert alert-block alert-danger fade in">Novo nome de usuário já existente.</div>'; ;
-                    $this->editar($mensagem);
+                    $this->session->set_userdata('msg', $mensagem);
+                    redirect(base_url('usuarios/gerenciar_usuarios/editar'));
                 }
                 else{
                     if(@$this->input->post('senha'))
@@ -273,10 +287,12 @@ class Gerenciar_usuarios extends CI_Controller {
                             $un['id_nivel'] = $n;
                             $this->um->novo_usuario_nivel($un);
                         }
-                        $this->index($mensagem);
+                        $this->session->set_userdata('msg', $mensagem);
+                        redirect(base_url('usuarios/gerenciar_usuarios'));
                     }
                     else
-                        $this->editar($mensagem);
+                        $this->session->set_userdata('msg', $mensagem);
+                        redirect(base_url('usuarios/gerenciar_usuarios/editar'));
                 }
             }
         }
@@ -376,6 +392,7 @@ class Gerenciar_usuarios extends CI_Controller {
         $dados = array();
         foreach($usuario as $u){
             $dados['id_usuario'] = $u->id_usuario;
+            $dados['email'] = $u->email;
             $dados['nome'] = $u->nome;
             $dados['ususario'] = $u->usuario;
 

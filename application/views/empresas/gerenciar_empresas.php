@@ -4,36 +4,49 @@
     </div>
     <div class="panel-body">
         <?php
-            echo form_open('empresas/gerenciar_empresas/filtro');
-                echo '<table width="100%" align="center">';
-                    $im = @$this->session->userdata['im'];
-                    $cnpj = @$this->session->userdata['cnpj'];
-                    $tipo = @$this->session->userdata['tipo'];
-                    
-                    $atributos = array(
-                        'name'  =>  'im',
-                        'id'    =>  'im',
-                        'class' =>  'form-control',
-                        'value' =>  $im
-                    );
-                    echo '<tr><td width="15%" align="right">'.form_label('Inscrição Estadual: ').nbs(2).'</td>';
-                    echo '<td width="25%">'.form_input($atributos).'</td>';
-                    
-                    $atributos = array(
-                        'name'  =>  'cnpj',
-                        'id'    =>  'cnpj',
-                        'class' =>  'form-control',
-                        'value' =>  $cnpj
-                    );
-                    echo '<td width="10%" align="right">'.form_label('CNPJ: ').nbs(2).'</td>';
-                    echo '<td width="25%">'.form_input($atributos).'</td>';
-                    
-                    $op[NULL] = '---';
-                    $op['COMERCIO'] = 'COMERCIO';
-                    $op['SERVICO'] = 'SERVICO';
-                    echo '<td width="10%" align="right">'.form_label('Tipo Empresa: ').nbs(2).'</td>';
-                    echo '<td width="20%">'.form_dropdown('tipo', $op, $tipo, 'class="form-control"').'</td></tr>';
-                echo '</table>';
+            echo form_open('empresas/gerenciar_empresas/filtro');?>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Inscrição Estadual:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12"> <?php
+                            $im = @$this->session->userdata['im'];
+                            $cnpj = @$this->session->userdata['cnpj'];
+                            $tipo = @$this->session->userdata['tipo'];
+
+                            $atributos = array(
+                                'name'  =>  'im',
+                                'id'    =>  'im',
+                                'class' =>  'form-control',
+                                'value' =>  $im
+                            );
+    //                        echo '<tr><td width="15%" align="right">'.form_label('Inscrição Estadual: ').nbs(2).'</td>';
+                            echo form_input($atributos); ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">CNPJ:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12"> <?php
+                            $atributos = array(
+                                'name'  =>  'cnpj',
+                                'id'    =>  'cnpj',
+                                'class' =>  'form-control',
+                                'value' =>  $cnpj
+                            );
+    //                        echo '<td width="10%" align="right">'.form_label('CNPJ: ').nbs(2).'</td>';
+                            echo form_input($atributos); ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Tipo Empresa:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12"> <?php
+                            $op[NULL] = '---';
+                            $op['COMERCIO'] = 'COMERCIO';
+                            $op['SERVICO'] = 'SERVICO';
+    //                        echo '<td width="10%" align="right">'.form_label('Tipo Empresa: ').nbs(2).'</td>';
+                            echo form_dropdown('tipo', $op, $tipo, 'class="form-control"'); ?>
+                        </div>
+                    </div> 
+                </div> <?php
                 
                 $atributos = array(
                     'name'  =>  'btnFiltrar',

@@ -6,7 +6,7 @@
         <?php echo form_open('usuarios/gerenciar_usuarios/filtro', array('class' => 'form-horizontal form-label-left'));?>
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome</label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome:</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <?php
                         $nome = @$this->session->userdata['nome'];
@@ -22,7 +22,7 @@
                       </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="usuario">Usuário</label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="usuario">Usuário:</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <?php
                         $nome = @$this->session->userdata['nome'];
@@ -80,6 +80,7 @@
             <thead>
                 <tr class="headings">
                     <td align="center"><b>Nome</b></td>
+                    <td align="center" class="hidden-xs"><b>E-Mail</b></td>
                     <td align="center"><b>Usuário</b></td>
                     <td align="center"><b>Editar</b></td>
                 </tr>
@@ -87,6 +88,7 @@
             <?php
             foreach (@$usuarios as $u){     
                 echo '<tr><td align="center">'.$u->nome.'</td>';
+                echo '<td align="center" class="hidden-xs">'.$u->email.'</td>';
                 echo '<td align="center">'.$u->usuario.'</td>';
                 echo '<td align="center"><a class="btn btn-primary" href="javascript:func()" onclick="editar_usuario(' . $u->id_usuario . ')"><i class="glyphicon glyphicon-list"></i></a></td></tr>';
             }
@@ -136,6 +138,13 @@
                     echo '<b>Nome:</b>';
                     $atributos = array(
                         'name'  =>  'nome',
+                        'class' =>  'form-control',
+                    );
+                    echo form_input($atributos).br();
+                    
+                    echo '<b>E-Mail:</b>';
+                    $atributos = array(
+                        'name'  =>  'email',
                         'class' =>  'form-control',
                     );
                     echo form_input($atributos).br();
@@ -216,6 +225,14 @@
                     $atributos = array(
                         'name'  =>  'nome',
                         'id'  =>  'nome_edt',
+                        'class' =>  'form-control',
+                    );
+                    echo form_input($atributos).br();
+                    
+                    echo '<b>E-Mail:</b>';
+                    $atributos = array(
+                        'name'  =>  'email',
+                        'id'  =>  'email_edt',
                         'class' =>  'form-control',
                     );
                     echo form_input($atributos).br();
